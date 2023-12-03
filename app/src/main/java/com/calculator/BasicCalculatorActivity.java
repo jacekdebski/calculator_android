@@ -18,8 +18,7 @@ public class BasicCalculatorActivity extends AppCompatActivity {
         oneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BasicCalculator basicCalculator = new BasicCalculator();
-                Double result = basicCalculator.onClickOne(1.0);
+                Double result = BasicCalculator.setNumber(1.0);
                 setPromptText(result.toString());
             }
         });
