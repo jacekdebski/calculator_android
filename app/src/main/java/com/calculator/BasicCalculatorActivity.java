@@ -3,6 +3,7 @@ package com.calculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,8 +19,17 @@ public class BasicCalculatorActivity extends AppCompatActivity {
         oneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Double result = BasicCalculator.setNumber(1.0);
-                setPromptText(result.toString());
+                String result = BasicCalculator.setNumber(1);
+                setPromptText(result);
+            }
+        });
+
+        Button twoButton = findViewById(R.id.twoButton);
+        twoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String result = BasicCalculator.setNumber(2);
+                setPromptText(result);
             }
         });
     }

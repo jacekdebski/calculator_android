@@ -1,14 +1,17 @@
 package com.calculator;
 
+import android.util.Log;
+
 public class BasicCalculator extends Calculator {
 
-    public static Double setNumber(Double number){
+    public static String setNumber(Integer number){
+        currentEnteredText = currentEnteredText.concat(number.toString());
+        Log.i("BasicCalculator", "current entered text " + currentEnteredText);
         if (currentWaitingNumberToSave == NUMBER.FIRST_NUMBER){
-            firstNumber = number;
-            currentWaitingNumberToSave = NUMBER.SECOND_NUMBER;
+            firstNumber = Double.valueOf(currentEnteredText);
         }else if (currentWaitingNumberToSave == NUMBER.SECOND_NUMBER){
-            secondNumber = number;
+            secondNumber = Double.parseDouble(currentEnteredText);;
         }
-        return number;
+        return currentEnteredText;
     }
 }
