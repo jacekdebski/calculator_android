@@ -32,10 +32,23 @@ public class MainActivity extends AppCompatActivity {
                 openAboutActivity();
             }
         });
+
+        Button basicCalculatorButton = findViewById(R.id.basicCalculatorButton);
+        basicCalculatorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openBasicCalculatorActivity();
+            }
+        });
     }
 
     public void openAboutActivity(){
         Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
+    }
+
+    public void openBasicCalculatorActivity(){
+        Intent intent = new Intent(this, BasicCalculatorActivity.class);
         startActivity(intent);
     }
 }
