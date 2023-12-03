@@ -2,6 +2,7 @@ package com.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,5 +24,18 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        Button aboutButton = findViewById(R.id.aboutButton);
+        aboutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAboutActivity();
+            }
+        });
+    }
+
+    public void openAboutActivity(){
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
     }
 }
