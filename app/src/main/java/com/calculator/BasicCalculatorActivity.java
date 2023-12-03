@@ -3,7 +3,6 @@ package com.calculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -29,6 +28,23 @@ public class BasicCalculatorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String result = BasicCalculator.setNumber(2);
+                setPromptText(result);
+            }
+        });
+
+        Button plusButton = findViewById(R.id.plusButton);
+        plusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BasicCalculator.add();
+            }
+        });
+
+        Button equalButton = findViewById(R.id.equalButton);
+        equalButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String result = BasicCalculator.setResult();
                 setPromptText(result);
             }
         });
