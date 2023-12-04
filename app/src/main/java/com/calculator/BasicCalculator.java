@@ -11,13 +11,15 @@ public class BasicCalculator extends Calculator {
     }
 
     public static void add(){
-        if (currentWaitingNumberToSave == NUMBER.FIRST_NUMBER){
-            firstNumber = Double.valueOf(currentEnteredText);
-            currentWaitingNumberToSave = NUMBER.SECOND_NUMBER;
-            currentEnteredText = "";
-        }else if (currentWaitingNumberToSave == NUMBER.SECOND_NUMBER){
-            secondNumber = Double.parseDouble(currentEnteredText);
-            result = firstNumber + secondNumber;
+        if (!currentEnteredText.isEmpty()){
+            if (currentWaitingNumberToSave == NUMBER.FIRST_NUMBER){
+                firstNumber = Double.valueOf(currentEnteredText);
+                currentWaitingNumberToSave = NUMBER.SECOND_NUMBER;
+                currentEnteredText = "";
+            }else if (currentWaitingNumberToSave == NUMBER.SECOND_NUMBER){
+                secondNumber = Double.parseDouble(currentEnteredText);
+                result = firstNumber + secondNumber;
+            }
         }
     }
 
