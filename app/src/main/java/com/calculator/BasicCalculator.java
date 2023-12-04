@@ -11,26 +11,29 @@ public class BasicCalculator extends Calculator {
     }
 
     public static void add(){
+        lastMathOperations = MATH_OPERATIONS.ADD;
         if (!currentEnteredText.isEmpty()){
             if (currentWaitingNumberToSave == NUMBER.FIRST_NUMBER){
-                firstNumber = Double.valueOf(currentEnteredText);
+                result = Double.parseDouble(currentEnteredText);
                 currentWaitingNumberToSave = NUMBER.SECOND_NUMBER;
-                currentEnteredText = "";
             }else if (currentWaitingNumberToSave == NUMBER.SECOND_NUMBER){
                 secondNumber = Double.parseDouble(currentEnteredText);
-                result = firstNumber + secondNumber;
+                result += secondNumber;
             }
+            currentEnteredText = "";
         }
     }
 
     public static String setResult(){
-        if (currentWaitingNumberToSave == NUMBER.FIRST_NUMBER){
-
-        }else if (currentWaitingNumberToSave == NUMBER.SECOND_NUMBER){
-            currentWaitingNumberToSave = NUMBER.FIRST_NUMBER;
+        if (!currentEnteredText.isEmpty()){
             secondNumber = Double.parseDouble(currentEnteredText);
             currentEnteredText = "";
-            result = firstNumber + secondNumber;
+        }
+
+        if (lastMathOperations == MATH_OPERATIONS.NONE){
+            result = secondNumber;
+        } else if (lastMathOperations == MATH_OPERATIONS.ADD){
+            result += secondNumber;
         }
 
         return Double.toString(result);
