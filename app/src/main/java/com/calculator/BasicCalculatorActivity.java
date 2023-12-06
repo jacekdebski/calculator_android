@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class BasicCalculatorActivity extends AppCompatActivity {
 
@@ -63,7 +64,11 @@ public class BasicCalculatorActivity extends AppCompatActivity {
         divisionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BasicCalculator.divide();
+                try {
+                    BasicCalculator.divide();
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -80,8 +85,12 @@ public class BasicCalculatorActivity extends AppCompatActivity {
         equalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String result = BasicCalculator.setResult();
-                setPromptText(result);
+                try {
+                    String result = BasicCalculator.setResult();
+                    setPromptText(result);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

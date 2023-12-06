@@ -1,6 +1,7 @@
 package com.calculator;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
@@ -59,7 +60,11 @@ public class BasicCalculator extends Calculator {
                 currentWaitingNumberToSave = NUMBER.SECOND_NUMBER;
             } else if (currentWaitingNumberToSave == NUMBER.SECOND_NUMBER) {
                 secondNumber = Double.parseDouble(currentEnteredText);
-                result /= secondNumber;
+                if (secondNumber == 0) {
+                    throw new ArithmeticException("divide by zero");
+                } else {
+                    result /= secondNumber;
+                }
             }
             currentEnteredText = "";
         }
@@ -78,7 +83,11 @@ public class BasicCalculator extends Calculator {
         } else if (lastMathOperations == MATH_OPERATIONS.SUBTRACT) {
             result -= secondNumber;
         } else if (lastMathOperations == MATH_OPERATIONS.DIVIDE) {
-            result /= secondNumber;
+            if (secondNumber == 0) {
+                throw new ArithmeticException("divide by zero");
+            } else {
+                result /= secondNumber;
+            }
         }
 
         DecimalFormat decimalFormat = new DecimalFormat("#.#######");
