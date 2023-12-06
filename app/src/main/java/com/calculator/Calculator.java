@@ -18,7 +18,7 @@ public class Calculator {
         SUBTRACT
     }
 
-    public static String getCurrentEnteredText(){
+    public static String getCurrentEnteredText() {
         return currentEnteredText;
     }
 }
