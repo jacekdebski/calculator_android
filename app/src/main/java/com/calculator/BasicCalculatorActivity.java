@@ -14,6 +14,8 @@ public class BasicCalculatorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_calculator);
 
+        setPromptText(Calculator.getCurrentEnteredText());
+
         Button oneButton = findViewById(R.id.oneButton);
         oneButton.setOnClickListener(new View.OnClickListener() {
             @Override

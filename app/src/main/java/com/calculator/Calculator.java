@@ -4,7 +4,7 @@ public class Calculator {
     protected static Double secondNumber = 0.0;
     protected static Double result = 0.0;
     protected static NUMBER currentWaitingNumberToSave = NUMBER.FIRST_NUMBER;
-    protected static String currentEnteredText = "";
+    protected static String currentEnteredText = "0";
     protected static MATH_OPERATIONS lastMathOperations = MATH_OPERATIONS.NONE;
 
     enum NUMBER {
@@ -16,5 +16,9 @@ public class Calculator {
         NONE,
         ADD,
         SUBTRACT
+    }
+
+    public static String getCurrentEnteredText(){
+        return currentEnteredText;
     }
 }
