@@ -2,6 +2,8 @@ package com.calculator;
 
 import android.util.Log;
 
+import java.text.DecimalFormat;
+
 public class BasicCalculator extends Calculator {
 
     public static String setNumber(Integer number) {
@@ -63,6 +65,7 @@ public class BasicCalculator extends Calculator {
             result -= secondNumber;
         }
 
-        return Double.toString(result);
+        DecimalFormat decimalFormat = new DecimalFormat("#.#");
+        return decimalFormat.format(result);
     }
 }
