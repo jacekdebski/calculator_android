@@ -48,6 +48,15 @@ public class BasicCalculatorActivity extends AppCompatActivity {
             }
         });
 
+        Button clearButton = findViewById(R.id.clearButton);
+        clearButton.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String result = BasicCalculator.clearLastNumber();
+                setPromptText(result);
+            }
+        }));
+
         Button equalButton = findViewById(R.id.equalButton);
         equalButton.setOnClickListener(new View.OnClickListener() {
             @Override

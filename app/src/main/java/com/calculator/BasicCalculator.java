@@ -10,6 +10,11 @@ public class BasicCalculator extends Calculator {
         return currentEnteredText;
     }
 
+    public static String clearLastNumber(){
+        currentEnteredText = "0";
+        return currentEnteredText;
+    }
+
     public static void add(){
         lastMathOperations = MATH_OPERATIONS.ADD;
         if (!currentEnteredText.isEmpty()){
