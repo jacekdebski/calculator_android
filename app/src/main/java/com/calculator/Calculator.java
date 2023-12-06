@@ -15,7 +15,8 @@ public class Calculator {
     enum MATH_OPERATIONS {
         NONE,
         ADD,
-        SUBTRACT
+        SUBTRACT,
+        DIVIDE
     }
 
     public static String getCurrentEnteredText() {

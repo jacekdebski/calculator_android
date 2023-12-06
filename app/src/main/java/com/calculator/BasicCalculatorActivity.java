@@ -59,6 +59,14 @@ public class BasicCalculatorActivity extends AppCompatActivity {
             }
         });
 
+        Button divisionButton = findViewById(R.id.divisionButton);
+        divisionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BasicCalculator.divide();
+            }
+        });
+
         Button clearButton = findViewById(R.id.clearButton);
         clearButton.setOnClickListener((new View.OnClickListener() {
             @Override

@@ -51,6 +51,20 @@ public class BasicCalculator extends Calculator {
         }
     }
 
+    public static void divide() {
+        lastMathOperations = MATH_OPERATIONS.DIVIDE;
+        if (!currentEnteredText.isEmpty()) {
+            if (currentWaitingNumberToSave == NUMBER.FIRST_NUMBER) {
+                result = Double.parseDouble(currentEnteredText);
+                currentWaitingNumberToSave = NUMBER.SECOND_NUMBER;
+            } else if (currentWaitingNumberToSave == NUMBER.SECOND_NUMBER) {
+                secondNumber = Double.parseDouble(currentEnteredText);
+                result /= secondNumber;
+            }
+            currentEnteredText = "";
+        }
+    }
+
     public static String setResult() {
         if (!currentEnteredText.isEmpty()) {
             secondNumber = Double.parseDouble(currentEnteredText);
@@ -63,9 +77,11 @@ public class BasicCalculator extends Calculator {
             result += secondNumber;
         } else if (lastMathOperations == MATH_OPERATIONS.SUBTRACT) {
             result -= secondNumber;
+        } else if (lastMathOperations == MATH_OPERATIONS.DIVIDE) {
+            result /= secondNumber;
         }
 
-        DecimalFormat decimalFormat = new DecimalFormat("#.#");
+        DecimalFormat decimalFormat = new DecimalFormat("#.#######");
         return decimalFormat.format(result);
     }
 }
