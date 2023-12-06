@@ -4,8 +4,14 @@ import android.util.Log;
 
 public class BasicCalculator extends Calculator {
 
-    public static String setNumber(Integer number){
-        currentEnteredText = currentEnteredText.concat(number.toString());
+    public static String setNumber(Integer number) {
+        if (currentEnteredText.equals("0")) {
+            if (number != 0) {
+                currentEnteredText = number.toString();
+            }
+        } else {
+            currentEnteredText = currentEnteredText.concat(number.toString());
+        }
         Log.i("BasicCalculator", "current entered text " + currentEnteredText);
         return currentEnteredText;
     }

@@ -16,6 +16,15 @@ public class BasicCalculatorActivity extends AppCompatActivity {
 
         setPromptText(Calculator.getCurrentEnteredText());
 
+        Button zeroButton = findViewById(R.id.zeroButton);
+        zeroButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String result = BasicCalculator.setNumber(0);
+                setPromptText(result);
+            }
+        });
+
         Button oneButton = findViewById(R.id.oneButton);
         oneButton.setOnClickListener(new View.OnClickListener() {
             @Override
