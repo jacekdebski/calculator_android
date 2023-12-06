@@ -14,6 +14,7 @@ public class Calculator {
 
     enum MATH_OPERATIONS {
         NONE,
-        ADD
+        ADD,
+        SUBTRACT
     }
 }

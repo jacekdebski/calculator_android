@@ -40,6 +40,14 @@ public class BasicCalculatorActivity extends AppCompatActivity {
             }
         });
 
+        Button minusButton = findViewById(R.id.minusButton);
+        minusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BasicCalculator.subtract();
+            }
+        });
+
         Button equalButton = findViewById(R.id.equalButton);
         equalButton.setOnClickListener(new View.OnClickListener() {
             @Override
