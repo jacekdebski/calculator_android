@@ -95,7 +95,7 @@ public class BasicCalculator extends Calculator {
     }
 
     public static String setResult() {
-        if (!currentEnteredText.isEmpty()) {
+        if (!currentEnteredText.equals("0")) {
             secondNumber = Double.parseDouble(currentEnteredText);
             currentEnteredText = "0";
         }
