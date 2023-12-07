@@ -58,7 +58,7 @@ public class BasicCalculator extends Calculator {
                 secondNumber = Double.parseDouble(currentEnteredText);
                 result += secondNumber;
             }
-            currentEnteredText = "";
+            currentEnteredText = "0";
         }
     }
 
@@ -72,7 +72,7 @@ public class BasicCalculator extends Calculator {
                 secondNumber = Double.parseDouble(currentEnteredText);
                 result -= secondNumber;
             }
-            currentEnteredText = "";
+            currentEnteredText = "0";
         }
     }
 
@@ -90,14 +90,14 @@ public class BasicCalculator extends Calculator {
                     result /= secondNumber;
                 }
             }
-            currentEnteredText = "";
+            currentEnteredText = "0";
         }
     }
 
     public static String setResult() {
         if (!currentEnteredText.isEmpty()) {
             secondNumber = Double.parseDouble(currentEnteredText);
-            currentEnteredText = "";
+            currentEnteredText = "0";
         }
 
         if (lastMathOperations == MATH_OPERATIONS.NONE) {
