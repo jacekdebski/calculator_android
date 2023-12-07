@@ -106,7 +106,7 @@ public class BasicCalculator extends Calculator {
     public static String undoLastSign() {
         if (!currentEnteredText.equals("0")) {
             currentEnteredText = currentEnteredText.substring(0, currentEnteredText.length() - 1);
-            if (currentEnteredText.isEmpty()) {
+            if (currentEnteredText.isEmpty() || currentEnteredText.equals("-")) {
                 currentEnteredText = "0";
             }
         } else {
