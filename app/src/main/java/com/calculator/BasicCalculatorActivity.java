@@ -73,6 +73,19 @@ public class BasicCalculatorActivity extends AppCompatActivity {
             }
         });
 
+        Button changeSignButton = findViewById(R.id.changeSignButton);
+        changeSignButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    String result = BasicCalculator.changeSign();
+                    setPromptText(result);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         Button clearButton = findViewById(R.id.clearButton);
         clearButton.setOnClickListener((new View.OnClickListener() {
             @Override

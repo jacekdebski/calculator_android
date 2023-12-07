@@ -24,6 +24,19 @@ public class BasicCalculator extends Calculator {
         return currentEnteredText;
     }
 
+    public static String changeSign() {
+        if (!currentEnteredText.equals("0")) {
+            Double parsedEnteredText = Double.parseDouble(currentEnteredText);
+            parsedEnteredText = parsedEnteredText * (-1);
+
+            DecimalFormat decimalFormat = new DecimalFormat("#.#######");
+            currentEnteredText = decimalFormat.format(parsedEnteredText);
+        } else {
+            throw new ArithmeticException("change sign for zero");
+        }
+        return currentEnteredText;
+    }
+
     public static void add() {
         lastMathOperations = MATH_OPERATIONS.ADD;
         if (!currentEnteredText.isEmpty()) {
