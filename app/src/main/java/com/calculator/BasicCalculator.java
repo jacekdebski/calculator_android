@@ -1,7 +1,6 @@
 package com.calculator;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
