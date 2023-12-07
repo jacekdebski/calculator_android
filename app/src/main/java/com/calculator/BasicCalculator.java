@@ -19,6 +19,21 @@ public class BasicCalculator extends Calculator {
         return currentEnteredText;
     }
 
+    public static String setComma() {
+        Log.i("BasicCalculator", "current entered text " + currentEnteredText);
+        if (currentEnteredText.contains(",")) {
+            if (currentEnteredText.endsWith(",")) {
+                currentEnteredText = currentEnteredText.substring(0, currentEnteredText.length() - 1);
+            } else {
+                throw new ArithmeticException("invalid inputted comma");
+            }
+        } else {
+            currentEnteredText = currentEnteredText.concat(",");
+        }
+        Log.i("BasicCalculator", "current entered text " + currentEnteredText);
+        return currentEnteredText;
+    }
+
     public static String clearLastNumber() {
         currentEnteredText = "0";
         return currentEnteredText;
