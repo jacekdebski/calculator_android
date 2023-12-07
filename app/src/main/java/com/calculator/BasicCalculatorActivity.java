@@ -2,6 +2,7 @@ package com.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -93,10 +94,24 @@ public class BasicCalculatorActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Button advancedCalculatorSwitcherButton = findViewById(R.id.advancedCalculatorSwitcherButton);
+        advancedCalculatorSwitcherButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchToAdvancedCalculator();
+            }
+        });
     }
 
     private void setPromptText(String textToWrite) {
         TextView promptTextView = findViewById(R.id.promptTextView);
         promptTextView.setText(textToWrite);
+    }
+
+    private void switchToAdvancedCalculator() {
+        finish();
+        Intent intent = new Intent(this, AdvancedCalculatorActivity.class);
+        startActivity(intent);
     }
 }
