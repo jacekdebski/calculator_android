@@ -2,8 +2,6 @@ package com.calculator;
 
 import android.util.Log;
 
-import java.text.DecimalFormat;
-
 public class BasicCalculator extends Calculator {
 
     public static String setNumber(Integer number) {
@@ -20,14 +18,14 @@ public class BasicCalculator extends Calculator {
 
     public static String setComma() {
         Log.i("BasicCalculator", "current entered text " + currentEnteredText);
-        if (currentEnteredText.contains(",")) {
-            if (currentEnteredText.endsWith(",")) {
+        if (currentEnteredText.contains(".")) {
+            if (currentEnteredText.endsWith(".")) {
                 currentEnteredText = currentEnteredText.substring(0, currentEnteredText.length() - 1);
             } else {
                 throw new ArithmeticException("invalid inputted comma");
             }
         } else {
-            currentEnteredText = currentEnteredText.concat(",");
+            currentEnteredText = currentEnteredText.concat(".");
         }
         Log.i("BasicCalculator", "current entered text " + currentEnteredText);
         return currentEnteredText;
@@ -43,8 +41,7 @@ public class BasicCalculator extends Calculator {
             Double parsedEnteredText = Double.parseDouble(currentEnteredText);
             parsedEnteredText = parsedEnteredText * (-1);
 
-            DecimalFormat decimalFormat = new DecimalFormat("#.#######");
-            currentEnteredText = decimalFormat.format(parsedEnteredText);
+            currentEnteredText = parseDoubleToString(parsedEnteredText);
         } else {
             throw new ArithmeticException("change sign for zero");
         }
@@ -117,7 +114,6 @@ public class BasicCalculator extends Calculator {
             }
         }
 
-        DecimalFormat decimalFormat = new DecimalFormat("#.#######");
-        return decimalFormat.format(result);
+        return parseDoubleToString(result);
     }
 }
