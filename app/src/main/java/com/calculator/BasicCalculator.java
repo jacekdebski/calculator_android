@@ -94,6 +94,18 @@ public class BasicCalculator extends Calculator {
         }
     }
 
+    public static String undoLastSign() {
+        if (!currentEnteredText.equals("0")) {
+            currentEnteredText = currentEnteredText.substring(0, currentEnteredText.length() - 1);
+            if (currentEnteredText.isEmpty()) {
+                currentEnteredText = "0";
+            }
+        } else {
+            throw new RuntimeException("undo operation is not permitted now");
+        }
+        return currentEnteredText;
+    }
+
     public static String setResult() {
         if (!currentEnteredText.equals("0")) {
             secondNumber = Double.parseDouble(currentEnteredText);

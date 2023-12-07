@@ -99,6 +99,19 @@ public class BasicCalculatorActivity extends AppCompatActivity {
             }
         });
 
+        Button backspaceButton = findViewById(R.id.backspaceButton);
+        backspaceButton.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    String result = BasicCalculator.undoLastSign();
+                    setPromptText(result);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }));
+
         Button clearButton = findViewById(R.id.clearButton);
         clearButton.setOnClickListener((new View.OnClickListener() {
             @Override
