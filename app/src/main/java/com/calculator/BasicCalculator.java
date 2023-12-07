@@ -36,6 +36,15 @@ public class BasicCalculator extends Calculator {
         return currentEnteredText;
     }
 
+    public static String resetCalculator() {
+        result = 0.0;
+        secondNumber = 0.0;
+        currentWaitingNumberToSave = NUMBER.FIRST_NUMBER;
+        currentEnteredText = "0";
+        lastMathOperations = MATH_OPERATIONS.NONE;
+        return currentEnteredText;
+    }
+
     public static String changeSign() {
         if (!currentEnteredText.equals("0")) {
             Double parsedEnteredText = Double.parseDouble(currentEnteredText);

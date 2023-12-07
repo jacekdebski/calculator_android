@@ -121,6 +121,15 @@ public class BasicCalculatorActivity extends AppCompatActivity {
             }
         }));
 
+        Button allClearButton = findViewById(R.id.allClearButton);
+        allClearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String result = BasicCalculator.resetCalculator();
+                setPromptText(result);
+            }
+        });
+
         Button equalButton = findViewById(R.id.equalButton);
         equalButton.setOnClickListener(new View.OnClickListener() {
             @Override
