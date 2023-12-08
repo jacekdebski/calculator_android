@@ -66,6 +66,7 @@ public class BasicCalculator extends Calculator {
             if (currentWaitingNumberToSave == NUMBER.FIRST_NUMBER) {
                 result = Double.parseDouble(currentEnteredText);
                 currentWaitingNumberToSave = NUMBER.SECOND_NUMBER;
+                secondNumber = 0.0;
             } else if (currentWaitingNumberToSave == NUMBER.SECOND_NUMBER) {
                 secondNumber = Double.parseDouble(currentEnteredText);
                 result += secondNumber;
@@ -81,6 +82,7 @@ public class BasicCalculator extends Calculator {
             if (currentWaitingNumberToSave == NUMBER.FIRST_NUMBER) {
                 result = Double.parseDouble(currentEnteredText);
                 currentWaitingNumberToSave = NUMBER.SECOND_NUMBER;
+                secondNumber = 0.0;
             } else if (currentWaitingNumberToSave == NUMBER.SECOND_NUMBER) {
                 secondNumber = Double.parseDouble(currentEnteredText);
                 result -= secondNumber;
@@ -96,6 +98,7 @@ public class BasicCalculator extends Calculator {
             if (currentWaitingNumberToSave == NUMBER.FIRST_NUMBER) {
                 result = Double.parseDouble(currentEnteredText);
                 currentWaitingNumberToSave = NUMBER.SECOND_NUMBER;
+                secondNumber = 0.0;
             } else if (currentWaitingNumberToSave == NUMBER.SECOND_NUMBER) {
                 secondNumber = Double.parseDouble(currentEnteredText);
                 if (secondNumber == 0) {
@@ -115,6 +118,7 @@ public class BasicCalculator extends Calculator {
             if (currentWaitingNumberToSave == NUMBER.FIRST_NUMBER) {
                 result = Double.parseDouble(currentEnteredText);
                 currentWaitingNumberToSave = NUMBER.SECOND_NUMBER;
+                secondNumber = 0.0;
             } else if (currentWaitingNumberToSave == NUMBER.SECOND_NUMBER) {
                 secondNumber = Double.parseDouble(currentEnteredText);
                 result *= secondNumber;
