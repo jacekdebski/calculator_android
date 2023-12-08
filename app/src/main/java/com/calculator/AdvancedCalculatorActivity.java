@@ -18,7 +18,10 @@ public class AdvancedCalculatorActivity extends BasicCalculatorActivity {
         setPromptText(Calculator.getCurrentEnteredText());
 
         initBasicButtonsListeners();
+        initAdvancedButtonsListeners();
+    }
 
+    private void initAdvancedButtonsListeners() {
         Button customExponentiationButton = findViewById(R.id.customExponentiation);
         customExponentiationButton.setOnClickListener(new View.OnClickListener() {
             @Override
