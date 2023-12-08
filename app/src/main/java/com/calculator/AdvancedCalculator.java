@@ -49,4 +49,22 @@ public class AdvancedCalculator extends BasicCalculator {
         return parseDoubleToString(result);
     }
 
+    public static String calculateNaturalLogarithm() {
+        lastMathOperations = MATH_OPERATIONS.NATURAL_LOGARITHM;
+        if (isNumberEntering) {
+            result = Double.parseDouble(currentEnteredText);
+        }
+
+        if (result <= 0) {
+            throw new ArithmeticException("natural logarithm for a negative number or zero");
+        }
+        result = Math.log(result);
+
+        secondNumber = 0.0;
+        currentEnteredText = "0";
+        isNumberEntering = false;
+
+        return parseDoubleToString(result);
+    }
+
 }

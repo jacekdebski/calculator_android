@@ -172,6 +172,11 @@ public class BasicCalculator extends Calculator {
                 throw new ArithmeticException("square for negative number");
             }
             result = Math.sqrt(result);
+        } else if (lastMathOperations == MATH_OPERATIONS.NATURAL_LOGARITHM) {
+            if (result < 0) {
+                throw new ArithmeticException("natural logarithm for a negative number or zero");
+            }
+            result = Math.log(result);
         }
 
         return parseDoubleToString(result);
