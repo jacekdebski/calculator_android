@@ -26,7 +26,8 @@ public class Calculator {
         CUSTOM_EXPONENTIATION,
         EXPONENTIATION_TO_POWER_TWO,
         SQRT,
-        NATURAL_LOGARITHM
+        NATURAL_LOGARITHM,
+        CUSTOM_LOGARITHM
     }
 
     public static String getCurrentEnteredText() {

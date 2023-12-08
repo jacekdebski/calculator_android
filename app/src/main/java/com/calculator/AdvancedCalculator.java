@@ -67,4 +67,26 @@ public class AdvancedCalculator extends BasicCalculator {
         return parseDoubleToString(result);
     }
 
+    public static void calculateCustomLogarithm() {
+        lastMathOperations = MATH_OPERATIONS.CUSTOM_LOGARITHM;
+        if (isNumberEntering) {
+            if (currentWaitingNumberToSave == NUMBER.FIRST_NUMBER) {
+                result = Double.parseDouble(currentEnteredText);
+                if (result <= 0) {
+                    throw new ArithmeticException("logarithm base is a negative number or zero");
+                }
+                currentWaitingNumberToSave = NUMBER.SECOND_NUMBER;
+                secondNumber = 0.0;
+            } else if (currentWaitingNumberToSave == NUMBER.SECOND_NUMBER) {
+                secondNumber = Double.parseDouble(currentEnteredText);
+                if (secondNumber <= 0) {
+                    throw new ArithmeticException("logarithm is a negative number or zero");
+                }
+                result = Math.log(secondNumber) / Math.log(result);
+            }
+            currentEnteredText = "0";
+            isNumberEntering = false;
+        }
+    }
+
 }

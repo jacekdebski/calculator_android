@@ -177,6 +177,14 @@ public class BasicCalculator extends Calculator {
                 throw new ArithmeticException("natural logarithm for a negative number or zero");
             }
             result = Math.log(result);
+        } else if (lastMathOperations == MATH_OPERATIONS.CUSTOM_LOGARITHM) {
+            if (result <= 0) {
+                throw new ArithmeticException("logarithm base is a negative number or zero");
+            }
+            if (secondNumber <= 0) {
+                throw new ArithmeticException("logarithm is a negative number or zero");
+            }
+            result = Math.log(secondNumber) / Math.log(result);
         }
 
         return parseDoubleToString(result);

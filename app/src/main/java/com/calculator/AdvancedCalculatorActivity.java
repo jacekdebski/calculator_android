@@ -63,6 +63,14 @@ public class AdvancedCalculatorActivity extends BasicCalculatorActivity {
             }
         });
 
+        Button customLogarithmButton = findViewById(R.id.customLogarithmButton);
+        customLogarithmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AdvancedCalculator.calculateCustomLogarithm();
+            }
+        });
+
         Button basicCalculatorSwitcherButton = findViewById(R.id.basicCalculatorSwitcherButton);
         basicCalculatorSwitcherButton.setOnClickListener(new View.OnClickListener() {
             @Override
