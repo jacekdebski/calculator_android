@@ -80,6 +80,15 @@ public class AdvancedCalculatorActivity extends BasicCalculatorActivity {
             }
         });
 
+        Button sinButton = findViewById(R.id.sinButton);
+        sinButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String result = AdvancedCalculator.calculateSin();
+                setPromptText(result);
+            }
+        });
+
         Button basicCalculatorSwitcherButton = findViewById(R.id.basicCalculatorSwitcherButton);
         basicCalculatorSwitcherButton.setOnClickListener(new View.OnClickListener() {
             @Override

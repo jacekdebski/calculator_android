@@ -28,7 +28,8 @@ public class Calculator {
         SQRT,
         NATURAL_LOGARITHM,
         CUSTOM_LOGARITHM,
-        PERCENTAGE
+        PERCENTAGE,
+        SIN
     }
 
     public static String getCurrentEnteredText() {

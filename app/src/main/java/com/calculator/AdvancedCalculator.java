@@ -105,4 +105,19 @@ public class AdvancedCalculator extends BasicCalculator {
         }
     }
 
+    public static String calculateSin() {
+        lastMathOperations = MATH_OPERATIONS.SIN;
+        if (isNumberEntering) {
+            result = Double.parseDouble(currentEnteredText);
+        }
+
+        result = Math.sin(result);
+
+        secondNumber = 0.0;
+        currentEnteredText = "0";
+        isNumberEntering = false;
+
+        return parseDoubleToString(result);
+    }
+
 }

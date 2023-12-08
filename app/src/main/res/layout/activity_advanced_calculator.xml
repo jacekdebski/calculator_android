@@ -116,6 +116,12 @@
                 android:layout_height="wrap_content"
                 android:text="log" />
 
+            <Button
+                android:id="@+id/sinButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sin (rad)" />
+
         </LinearLayout>
 
         <LinearLayout

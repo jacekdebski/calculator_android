@@ -187,6 +187,8 @@ public class BasicCalculator extends Calculator {
             result = Math.log(secondNumber) / Math.log(result);
         } else if (lastMathOperations == MATH_OPERATIONS.PERCENTAGE) {
             result = result * secondNumber / 100;
+        } else if (lastMathOperations == MATH_OPERATIONS.SIN) {
+            result = Math.sin(result);
         }
 
         return parseDoubleToString(result);
