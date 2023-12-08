@@ -98,6 +98,19 @@ public class AdvancedCalculatorActivity extends BasicCalculatorActivity {
             }
         });
 
+        Button tanButton = findViewById(R.id.tanButton);
+        tanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    String result = AdvancedCalculator.calculateTan();
+                    setPromptText(result);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         Button basicCalculatorSwitcherButton = findViewById(R.id.basicCalculatorSwitcherButton);
         basicCalculatorSwitcherButton.setOnClickListener(new View.OnClickListener() {
             @Override

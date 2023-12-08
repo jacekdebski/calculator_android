@@ -135,4 +135,23 @@ public class AdvancedCalculator extends BasicCalculator {
         return parseDoubleToString(result);
     }
 
+    public static String calculateTan() {
+        lastMathOperations = MATH_OPERATIONS.TAN;
+        if (isNumberEntering) {
+            result = Double.parseDouble(currentEnteredText);
+        }
+
+        Double temp = Math.tan(result);
+        if (temp == Double.POSITIVE_INFINITY || temp == Double.NEGATIVE_INFINITY) {
+            throw new ArithmeticException("incorrect inputted value for tangent");
+        }
+        result = temp;
+
+        secondNumber = 0.0;
+        currentEnteredText = "0";
+        isNumberEntering = false;
+
+        return parseDoubleToString(result);
+    }
+
 }

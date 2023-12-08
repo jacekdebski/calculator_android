@@ -191,6 +191,12 @@ public class BasicCalculator extends Calculator {
             result = Math.sin(result);
         } else if (lastMathOperations == MATH_OPERATIONS.COS) {
             result = Math.cos(result);
+        } else if (lastMathOperations == MATH_OPERATIONS.TAN) {
+            Double temp = Math.tan(result);
+            if (temp == Double.POSITIVE_INFINITY || temp == Double.NEGATIVE_INFINITY) {
+                throw new ArithmeticException("incorrect inputted value for tangent");
+            }
+            result = temp;
         }
 
         return parseDoubleToString(result);

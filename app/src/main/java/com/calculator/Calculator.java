@@ -30,7 +30,8 @@ public class Calculator {
         CUSTOM_LOGARITHM,
         PERCENTAGE,
         SIN,
-        COS
+        COS,
+        TAN
     }
 
     public static String getCurrentEnteredText() {
