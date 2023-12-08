@@ -55,7 +55,7 @@ public class BasicCalculator extends Calculator {
 
             currentEnteredText = parseDoubleToString(parsedEnteredText);
         } else {
-            throw new ArithmeticException("change sign for zero");
+            throw new ArithmeticException("not possible to change the sign now");
         }
         return currentEnteredText;
     }
