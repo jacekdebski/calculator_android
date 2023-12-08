@@ -24,7 +24,8 @@ public class Calculator {
         DIVIDE,
         MULTIPLY,
         CUSTOM_EXPONENTIATION,
-        EXPONENTIATION_TO_POWER_TWO
+        EXPONENTIATION_TO_POWER_TWO,
+        SQRT
     }
 
     public static String getCurrentEnteredText() {

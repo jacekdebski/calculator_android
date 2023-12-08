@@ -167,6 +167,11 @@ public class BasicCalculator extends Calculator {
             result = Math.pow(result, secondNumber);
         } else if (lastMathOperations == MATH_OPERATIONS.EXPONENTIATION_TO_POWER_TWO) {
             result = Math.pow(result, 2);
+        } else if (lastMathOperations == MATH_OPERATIONS.SQRT) {
+            if (result < 0) {
+                throw new ArithmeticException("square for negative number");
+            }
+            result = Math.sqrt(result);
         }
 
         return parseDoubleToString(result);

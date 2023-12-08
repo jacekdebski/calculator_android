@@ -31,4 +31,22 @@ public class AdvancedCalculator extends BasicCalculator {
         return parseDoubleToString(result);
     }
 
+    public static String extractToTheRootOfTwo() {
+        lastMathOperations = MATH_OPERATIONS.SQRT;
+        if (isNumberEntering) {
+            result = Double.parseDouble(currentEnteredText);
+        }
+
+        if (result < 0) {
+            throw new ArithmeticException("square for negative number");
+        }
+        result = Math.sqrt(result);
+
+        secondNumber = 0.0;
+        currentEnteredText = "0";
+        isNumberEntering = false;
+
+        return parseDoubleToString(result);
+    }
+
 }

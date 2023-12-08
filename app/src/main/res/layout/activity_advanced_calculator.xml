@@ -75,6 +75,12 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/squareRootButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sqrt" />
+
+            <Button
                 android:id="@+id/customExponentiationButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

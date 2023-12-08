@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class AdvancedCalculatorActivity extends BasicCalculatorActivity {
 
@@ -19,6 +20,19 @@ public class AdvancedCalculatorActivity extends BasicCalculatorActivity {
     }
 
     private void initAdvancedButtonsListeners() {
+        Button squareRootButton = findViewById(R.id.squareRootButton);
+        squareRootButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    String result = AdvancedCalculator.extractToTheRootOfTwo();
+                    setPromptText(result);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         Button customExponentiationButton = findViewById(R.id.customExponentiationButton);
         customExponentiationButton.setOnClickListener(new View.OnClickListener() {
             @Override
