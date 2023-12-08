@@ -143,6 +143,7 @@ public class BasicCalculator extends Calculator {
         }
 
         isNumberEntering = false;
+        currentWaitingNumberToSave = NUMBER.FIRST_NUMBER;
 
         if (lastMathOperations == MATH_OPERATIONS.NONE) {
             result = secondNumber;
