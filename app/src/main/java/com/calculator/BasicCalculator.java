@@ -13,6 +13,7 @@ public class BasicCalculator extends Calculator {
             currentEnteredText = currentEnteredText.concat(number.toString());
         }
         Log.i("BasicCalculator", "current entered text " + currentEnteredText);
+        isNumberEntering = true;
         return currentEnteredText;
     }
 
@@ -28,6 +29,7 @@ public class BasicCalculator extends Calculator {
             currentEnteredText = currentEnteredText.concat(".");
         }
         Log.i("BasicCalculator", "current entered text " + currentEnteredText);
+        isNumberEntering = true;
         return currentEnteredText;
     }
 
@@ -41,6 +43,7 @@ public class BasicCalculator extends Calculator {
         secondNumber = 0.0;
         currentWaitingNumberToSave = NUMBER.FIRST_NUMBER;
         currentEnteredText = "0";
+        isNumberEntering = true;
         lastMathOperations = MATH_OPERATIONS.NONE;
         return currentEnteredText;
     }
@@ -59,7 +62,7 @@ public class BasicCalculator extends Calculator {
 
     public static void add() {
         lastMathOperations = MATH_OPERATIONS.ADD;
-        if (!currentEnteredText.isEmpty()) {
+        if (isNumberEntering) {
             if (currentWaitingNumberToSave == NUMBER.FIRST_NUMBER) {
                 result = Double.parseDouble(currentEnteredText);
                 currentWaitingNumberToSave = NUMBER.SECOND_NUMBER;
@@ -68,12 +71,13 @@ public class BasicCalculator extends Calculator {
                 result += secondNumber;
             }
             currentEnteredText = "0";
+            isNumberEntering = false;
         }
     }
 
     public static void subtract() {
         lastMathOperations = MATH_OPERATIONS.SUBTRACT;
-        if (!currentEnteredText.isEmpty()) {
+        if (isNumberEntering) {
             if (currentWaitingNumberToSave == NUMBER.FIRST_NUMBER) {
                 result = Double.parseDouble(currentEnteredText);
                 currentWaitingNumberToSave = NUMBER.SECOND_NUMBER;
@@ -82,12 +86,13 @@ public class BasicCalculator extends Calculator {
                 result -= secondNumber;
             }
             currentEnteredText = "0";
+            isNumberEntering = false;
         }
     }
 
     public static void divide() {
         lastMathOperations = MATH_OPERATIONS.DIVIDE;
-        if (!currentEnteredText.isEmpty()) {
+        if (isNumberEntering) {
             if (currentWaitingNumberToSave == NUMBER.FIRST_NUMBER) {
                 result = Double.parseDouble(currentEnteredText);
                 currentWaitingNumberToSave = NUMBER.SECOND_NUMBER;
@@ -100,12 +105,13 @@ public class BasicCalculator extends Calculator {
                 }
             }
             currentEnteredText = "0";
+            isNumberEntering = false;
         }
     }
 
     public static void multiply() {
         lastMathOperations = MATH_OPERATIONS.MULTIPLY;
-        if (!currentEnteredText.isEmpty()) {
+        if (isNumberEntering) {
             if (currentWaitingNumberToSave == NUMBER.FIRST_NUMBER) {
                 result = Double.parseDouble(currentEnteredText);
                 currentWaitingNumberToSave = NUMBER.SECOND_NUMBER;
@@ -114,6 +120,7 @@ public class BasicCalculator extends Calculator {
                 result *= secondNumber;
             }
             currentEnteredText = "0";
+            isNumberEntering = false;
         }
     }
 
@@ -134,6 +141,8 @@ public class BasicCalculator extends Calculator {
             secondNumber = Double.parseDouble(currentEnteredText);
             currentEnteredText = "0";
         }
+
+        isNumberEntering = false;
 
         if (lastMathOperations == MATH_OPERATIONS.NONE) {
             result = secondNumber;

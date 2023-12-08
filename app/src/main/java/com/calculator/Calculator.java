@@ -9,6 +9,7 @@ public class Calculator {
     protected static Double result = 0.0;
     protected static NUMBER currentWaitingNumberToSave = NUMBER.FIRST_NUMBER;
     protected static String currentEnteredText = "0";
+    protected static Boolean isNumberEntering = true;
     protected static MATH_OPERATIONS lastMathOperations = MATH_OPERATIONS.NONE;
 
     enum NUMBER {
