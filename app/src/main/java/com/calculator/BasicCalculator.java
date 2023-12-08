@@ -185,6 +185,8 @@ public class BasicCalculator extends Calculator {
                 throw new ArithmeticException("logarithm is a negative number or zero");
             }
             result = Math.log(secondNumber) / Math.log(result);
+        } else if (lastMathOperations == MATH_OPERATIONS.PERCENTAGE) {
+            result = result * secondNumber / 100;
         }
 
         return parseDoubleToString(result);

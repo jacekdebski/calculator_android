@@ -3,6 +3,7 @@ package com.calculator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -68,6 +69,14 @@ public class AdvancedCalculatorActivity extends BasicCalculatorActivity {
             @Override
             public void onClick(View v) {
                 AdvancedCalculator.calculateCustomLogarithm();
+            }
+        });
+
+        Button percentButton = findViewById(R.id.percentButton);
+        percentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AdvancedCalculator.calculatePercentage();
             }
         });
 
