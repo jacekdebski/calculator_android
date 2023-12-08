@@ -140,6 +140,12 @@
                 android:layout_height="wrap_content"
                 android:text="tan (rad)" />
 
+            <Button
+                android:id="@+id/cotButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cot (rad)" />
+
         </LinearLayout>
 
         <LinearLayout

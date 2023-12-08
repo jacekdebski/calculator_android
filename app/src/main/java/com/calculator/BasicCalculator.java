@@ -197,6 +197,12 @@ public class BasicCalculator extends Calculator {
                 throw new ArithmeticException("incorrect inputted value for tangent");
             }
             result = temp;
+        } else if (lastMathOperations == MATH_OPERATIONS.COT) {
+            Double temp = 1 / Math.tan(result);
+            if (temp == Double.POSITIVE_INFINITY || temp == Double.NEGATIVE_INFINITY) {
+                throw new ArithmeticException("incorrect inputted value for cotangent");
+            }
+            result = temp;
         }
 
         return parseDoubleToString(result);

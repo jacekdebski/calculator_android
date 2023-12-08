@@ -154,4 +154,23 @@ public class AdvancedCalculator extends BasicCalculator {
         return parseDoubleToString(result);
     }
 
+    public static String calculateCot() {
+        lastMathOperations = MATH_OPERATIONS.TAN;
+        if (isNumberEntering) {
+            result = Double.parseDouble(currentEnteredText);
+        }
+
+        Double temp = 1 / Math.tan(result);
+        if (temp == Double.POSITIVE_INFINITY || temp == Double.NEGATIVE_INFINITY) {
+            throw new ArithmeticException("incorrect inputted value for cotangent");
+        }
+        result = temp;
+
+        secondNumber = 0.0;
+        currentEnteredText = "0";
+        isNumberEntering = false;
+
+        return parseDoubleToString(result);
+    }
+
 }

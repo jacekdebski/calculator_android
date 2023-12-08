@@ -31,7 +31,8 @@ public class Calculator {
         PERCENTAGE,
         SIN,
         COS,
-        TAN
+        TAN,
+        COT
     }
 
     public static String getCurrentEnteredText() {

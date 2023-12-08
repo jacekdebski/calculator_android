@@ -111,6 +111,19 @@ public class AdvancedCalculatorActivity extends BasicCalculatorActivity {
             }
         });
 
+        Button cotButton = findViewById(R.id.cotButton);
+        cotButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    String result = AdvancedCalculator.calculateCot();
+                    setPromptText(result);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         Button basicCalculatorSwitcherButton = findViewById(R.id.basicCalculatorSwitcherButton);
         basicCalculatorSwitcherButton.setOnClickListener(new View.OnClickListener() {
             @Override
