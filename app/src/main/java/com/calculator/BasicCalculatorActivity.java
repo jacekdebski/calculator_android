@@ -227,7 +227,7 @@ public class BasicCalculatorActivity extends AppCompatActivity {
         });
     }
 
-    private void setPromptText(String textToWrite) {
+    protected void setPromptText(String textToWrite) {
         TextView promptTextView = findViewById(R.id.promptTextView);
         promptTextView.setText(textToWrite);
     }

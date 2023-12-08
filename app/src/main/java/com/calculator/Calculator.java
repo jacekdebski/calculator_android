@@ -22,7 +22,8 @@ public class Calculator {
         ADD,
         SUBTRACT,
         DIVIDE,
-        MULTIPLY
+        MULTIPLY,
+        CUSTOM_EXPONENTIATION
     }
 
     public static String getCurrentEnteredText() {

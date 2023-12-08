@@ -163,6 +163,8 @@ public class BasicCalculator extends Calculator {
             }
         } else if (lastMathOperations == MATH_OPERATIONS.MULTIPLY) {
             result *= secondNumber;
+        } else if (lastMathOperations == MATH_OPERATIONS.CUSTOM_EXPONENTIATION) {
+            result = Math.pow(result, secondNumber);
         }
 
         return parseDoubleToString(result);
