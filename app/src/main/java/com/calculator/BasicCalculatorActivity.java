@@ -18,6 +18,18 @@ public class BasicCalculatorActivity extends AppCompatActivity {
 
         setPromptText(Calculator.getCurrentEnteredText());
 
+        initBasicButtonsListeners();
+
+        Button advancedCalculatorSwitcherButton = findViewById(R.id.advancedCalculatorSwitcherButton);
+        advancedCalculatorSwitcherButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchToAdvancedCalculator();
+            }
+        });
+    }
+
+    protected void initBasicButtonsListeners() {
         Button zeroButton = findViewById(R.id.zeroButton);
         zeroButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -211,14 +223,6 @@ public class BasicCalculatorActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
-
-        Button advancedCalculatorSwitcherButton = findViewById(R.id.advancedCalculatorSwitcherButton);
-        advancedCalculatorSwitcherButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switchToAdvancedCalculator();
             }
         });
     }
