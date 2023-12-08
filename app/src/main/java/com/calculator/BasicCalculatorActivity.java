@@ -45,6 +45,69 @@ public class BasicCalculatorActivity extends AppCompatActivity {
             }
         });
 
+        Button threeButton = findViewById(R.id.threeButton);
+        threeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String result = BasicCalculator.setNumber(3);
+                setPromptText(result);
+            }
+        });
+
+        Button fourButton = findViewById(R.id.fourButton);
+        fourButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String result = BasicCalculator.setNumber(4);
+                setPromptText(result);
+            }
+        });
+
+        Button fiveButton = findViewById(R.id.fiveButton);
+        fiveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String result = BasicCalculator.setNumber(5);
+                setPromptText(result);
+            }
+        });
+
+        Button sixButton = findViewById(R.id.sixButton);
+        sixButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String result = BasicCalculator.setNumber(6);
+                setPromptText(result);
+            }
+        });
+
+        Button sevenButton = findViewById(R.id.sevenButton);
+        sevenButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String result = BasicCalculator.setNumber(7);
+                setPromptText(result);
+            }
+        });
+
+        Button eightButton = findViewById(R.id.eightButton);
+        eightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String result = BasicCalculator.setNumber(8);
+                setPromptText(result);
+            }
+        });
+
+        Button nineButton = findViewById(R.id.nineButton);
+        nineButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String result = BasicCalculator.setNumber(9);
+                setPromptText(result);
+            }
+        });
+
         Button plusButton = findViewById(R.id.plusButton);
         plusButton.setOnClickListener(new View.OnClickListener() {
             @Override
