@@ -189,6 +189,8 @@ public class BasicCalculator extends Calculator {
             result = result * secondNumber / 100;
         } else if (lastMathOperations == MATH_OPERATIONS.SIN) {
             result = Math.sin(result);
+        } else if (lastMathOperations == MATH_OPERATIONS.COS) {
+            result = Math.cos(result);
         }
 
         return parseDoubleToString(result);

@@ -122,6 +122,12 @@
                 android:layout_height="wrap_content"
                 android:text="sin (rad)" />
 
+            <Button
+                android:id="@+id/cosButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cos (rad)" />
+
         </LinearLayout>
 
         <LinearLayout

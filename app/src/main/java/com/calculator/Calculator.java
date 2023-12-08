@@ -29,7 +29,8 @@ public class Calculator {
         NATURAL_LOGARITHM,
         CUSTOM_LOGARITHM,
         PERCENTAGE,
-        SIN
+        SIN,
+        COS
     }
 
     public static String getCurrentEnteredText() {
