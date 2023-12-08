@@ -136,6 +136,14 @@ public class BasicCalculatorActivity extends AppCompatActivity {
             }
         });
 
+        Button multiplicationButton = findViewById(R.id.multiplicationButton);
+        multiplicationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BasicCalculator.multiply();
+            }
+        });
+
         Button changeSignButton = findViewById(R.id.changeSignButton);
         changeSignButton.setOnClickListener(new View.OnClickListener() {
             @Override

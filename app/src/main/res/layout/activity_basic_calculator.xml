@@ -124,6 +124,13 @@
                 android:layout_height="wrap_content"
                 android:text="6" />
 
+            <Button
+                android:id="@+id/multiplicationButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*" />
+
+
         </LinearLayout>
 
         <LinearLayout

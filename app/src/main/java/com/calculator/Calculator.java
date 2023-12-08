@@ -20,7 +20,8 @@ public class Calculator {
         NONE,
         ADD,
         SUBTRACT,
-        DIVIDE
+        DIVIDE,
+        MULTIPLY
     }
 
     public static String getCurrentEnteredText() {

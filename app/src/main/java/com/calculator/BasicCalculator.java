@@ -103,6 +103,20 @@ public class BasicCalculator extends Calculator {
         }
     }
 
+    public static void multiply() {
+        lastMathOperations = MATH_OPERATIONS.MULTIPLY;
+        if (!currentEnteredText.isEmpty()) {
+            if (currentWaitingNumberToSave == NUMBER.FIRST_NUMBER) {
+                result = Double.parseDouble(currentEnteredText);
+                currentWaitingNumberToSave = NUMBER.SECOND_NUMBER;
+            } else if (currentWaitingNumberToSave == NUMBER.SECOND_NUMBER) {
+                secondNumber = Double.parseDouble(currentEnteredText);
+                result *= secondNumber;
+            }
+            currentEnteredText = "0";
+        }
+    }
+
     public static String undoLastSign() {
         if (!currentEnteredText.equals("0")) {
             currentEnteredText = currentEnteredText.substring(0, currentEnteredText.length() - 1);
@@ -133,6 +147,8 @@ public class BasicCalculator extends Calculator {
             } else {
                 result /= secondNumber;
             }
+        } else if (lastMathOperations == MATH_OPERATIONS.MULTIPLY) {
+            result *= secondNumber;
         }
 
         return parseDoubleToString(result);
