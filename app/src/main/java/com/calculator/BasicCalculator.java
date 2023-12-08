@@ -165,6 +165,8 @@ public class BasicCalculator extends Calculator {
             result *= secondNumber;
         } else if (lastMathOperations == MATH_OPERATIONS.CUSTOM_EXPONENTIATION) {
             result = Math.pow(result, secondNumber);
+        } else if (lastMathOperations == MATH_OPERATIONS.EXPONENTIATION_TO_POWER_TWO) {
+            result = Math.pow(result, 2);
         }
 
         return parseDoubleToString(result);

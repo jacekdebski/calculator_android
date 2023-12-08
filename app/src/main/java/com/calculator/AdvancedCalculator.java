@@ -1,6 +1,6 @@
 package com.calculator;
 
-public class AdvancedCalculator extends BasicCalculator{
+public class AdvancedCalculator extends BasicCalculator {
 
     public static void raiseToCustomExponent() {
         lastMathOperations = MATH_OPERATIONS.CUSTOM_EXPONENTIATION;
@@ -16,6 +16,19 @@ public class AdvancedCalculator extends BasicCalculator{
             currentEnteredText = "0";
             isNumberEntering = false;
         }
+    }
+
+    public static String raiseToPowerTwo() {
+        lastMathOperations = MATH_OPERATIONS.EXPONENTIATION_TO_POWER_TWO;
+        if (isNumberEntering) {
+            result = Double.parseDouble(currentEnteredText);
+        }
+        result = Math.pow(result, 2);
+
+        secondNumber = 0.0;
+        currentEnteredText = "0";
+        isNumberEntering = false;
+        return parseDoubleToString(result);
     }
 
 }

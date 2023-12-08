@@ -27,6 +27,15 @@ public class AdvancedCalculatorActivity extends BasicCalculatorActivity {
             }
         });
 
+        Button exponentiationToPowerTwoButton = findViewById(R.id.exponentiationToPowerTwoButton);
+        exponentiationToPowerTwoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String result = AdvancedCalculator.raiseToPowerTwo();
+                setPromptText(result);
+            }
+        });
+
         Button basicCalculatorSwitcherButton = findViewById(R.id.basicCalculatorSwitcherButton);
         basicCalculatorSwitcherButton.setOnClickListener(new View.OnClickListener() {
             @Override
