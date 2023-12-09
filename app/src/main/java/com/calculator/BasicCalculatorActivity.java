@@ -19,6 +19,7 @@ public class BasicCalculatorActivity extends AppCompatActivity {
         setPromptText(Calculator.getCurrentEnteredText());
 
         initBasicButtonsListeners();
+        initBackToMenuButtonsListener();
 
         Button advancedCalculatorSwitcherButton = findViewById(R.id.advancedCalculatorSwitcherButton);
         advancedCalculatorSwitcherButton.setOnClickListener(new View.OnClickListener() {
@@ -267,10 +268,14 @@ public class BasicCalculatorActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void initBackToMenuButtonsListener() {
         Button backToMenuButton = findViewById(R.id.backToMenuButton);
         backToMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                BasicCalculator.resetCalculator();
                 finish();
             }
         });

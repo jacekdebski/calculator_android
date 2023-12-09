@@ -15,6 +15,7 @@ public class AdvancedCalculatorActivity extends BasicCalculatorActivity {
         setContentView(R.layout.activity_advanced_calculator);
 
         setPromptText(Calculator.getCurrentEnteredText());
+        initBackToMenuButtonsListener();
 
         initBasicButtonsListeners();
         initAdvancedButtonsListeners();
@@ -129,6 +130,17 @@ public class AdvancedCalculatorActivity extends BasicCalculatorActivity {
             @Override
             public void onClick(View v) {
                 switchToBasicCalculator();
+            }
+        });
+    }
+
+    private void initBackToMenuButtonsListener() {
+        Button backToMenuButton = findViewById(R.id.backToMenuButton);
+        backToMenuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AdvancedCalculator.resetCalculator();
+                finish();
             }
         });
     }
