@@ -225,6 +225,14 @@ public class BasicCalculatorActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Button backToMenuButton = findViewById(R.id.backToMenuButton);
+        backToMenuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     protected void setPromptText(String textToWrite) {
