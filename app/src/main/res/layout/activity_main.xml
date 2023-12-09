@@ -18,6 +18,12 @@
             android:text="Basic Calculator" />
 
         <Button
+            android:id="@+id/advancedCalculatorButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Advanced Calculator" />
+
+        <Button
             android:id="@+id/aboutButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

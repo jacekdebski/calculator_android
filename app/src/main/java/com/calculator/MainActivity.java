@@ -40,15 +40,28 @@ public class MainActivity extends AppCompatActivity {
                 openBasicCalculatorActivity();
             }
         });
+
+        Button advancedCalculatorButton = findViewById(R.id.advancedCalculatorButton);
+        advancedCalculatorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAdvancedCalculatorActivity();
+            }
+        });
     }
 
-    public void openAboutActivity(){
+    private void openAboutActivity() {
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
 
-    public void openBasicCalculatorActivity(){
+    private void openBasicCalculatorActivity() {
         Intent intent = new Intent(this, BasicCalculatorActivity.class);
+        startActivity(intent);
+    }
+
+    private void openAdvancedCalculatorActivity() {
+        Intent intent = new Intent(this, AdvancedCalculatorActivity.class);
         startActivity(intent);
     }
 }
