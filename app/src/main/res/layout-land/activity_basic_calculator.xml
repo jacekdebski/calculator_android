@@ -46,41 +46,6 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/backspaceButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="bksp" />
-
-            <Button
-                android:id="@+id/allClearButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="AC" />
-
-            <Button
-                android:id="@+id/clearButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="C" />
-
-            <Button
-                android:id="@+id/changeSignButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="+/-" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:orientation="horizontal">
-
-            <Button
                 android:id="@+id/sevenButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -107,6 +72,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="/" />
+
+            <Button
+                android:id="@+id/backspaceButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="bksp" />
 
         </LinearLayout>
 
@@ -143,6 +115,12 @@
                 android:layout_weight="1"
                 android:text="*" />
 
+            <Button
+                android:id="@+id/allClearButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="AC" />
 
         </LinearLayout>
 
@@ -179,6 +157,13 @@
                 android:layout_weight="1"
                 android:text="-" />
 
+            <Button
+                android:id="@+id/clearButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="C" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -213,6 +198,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="+" />
+
+            <Button
+                android:id="@+id/changeSignButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="+/-" />
 
         </LinearLayout>
 
