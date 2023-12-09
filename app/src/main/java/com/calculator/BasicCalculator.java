@@ -5,6 +5,7 @@ import android.util.Log;
 public class BasicCalculator extends Calculator {
 
     public static String setNumber(Integer number) {
+        assertPromptSize();
         if (currentEnteredText.equals("0")) {
             if (number != 0) {
                 currentEnteredText = number.toString();
@@ -18,6 +19,7 @@ public class BasicCalculator extends Calculator {
     }
 
     public static String setComma() {
+        assertPromptSize();
         Log.i("BasicCalculator", "current entered text " + currentEnteredText);
         if (currentEnteredText.contains(".")) {
             if (currentEnteredText.endsWith(".")) {
@@ -49,6 +51,7 @@ public class BasicCalculator extends Calculator {
     }
 
     public static String changeSign() {
+        assertPromptSize();
         if (!currentEnteredText.equals("0")) {
             Double parsedEnteredText = Double.parseDouble(currentEnteredText);
             parsedEnteredText = parsedEnteredText * (-1);

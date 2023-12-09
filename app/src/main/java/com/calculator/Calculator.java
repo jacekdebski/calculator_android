@@ -42,7 +42,13 @@ public class Calculator {
     protected static String parseDoubleToString(Double numberToParse) {
         Locale locale = new Locale("en", "US");
         DecimalFormat decimalFormat = (DecimalFormat) NumberFormat.getNumberInstance(locale);
-        decimalFormat.applyPattern("#.#######");
+        decimalFormat.applyPattern("#.#########");
         return decimalFormat.format(numberToParse);
+    }
+
+    protected static void assertPromptSize() {
+        if (currentEnteredText.length() > 9) {
+            throw new ArithmeticException("too big  inputted number");
+        }
     }
 }

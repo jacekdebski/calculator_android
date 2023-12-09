@@ -34,8 +34,12 @@ public class BasicCalculatorActivity extends AppCompatActivity {
         zeroButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String result = BasicCalculator.setNumber(0);
-                setPromptText(result);
+                try {
+                    String result = BasicCalculator.setNumber(0);
+                    setPromptText(result);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -43,8 +47,13 @@ public class BasicCalculatorActivity extends AppCompatActivity {
         oneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String result = BasicCalculator.setNumber(1);
-                setPromptText(result);
+                try {
+                    String result = BasicCalculator.setNumber(1);
+                    setPromptText(result);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -52,8 +61,12 @@ public class BasicCalculatorActivity extends AppCompatActivity {
         twoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String result = BasicCalculator.setNumber(2);
-                setPromptText(result);
+                try {
+                    String result = BasicCalculator.setNumber(2);
+                    setPromptText(result);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -61,8 +74,12 @@ public class BasicCalculatorActivity extends AppCompatActivity {
         threeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String result = BasicCalculator.setNumber(3);
-                setPromptText(result);
+                try {
+                    String result = BasicCalculator.setNumber(3);
+                    setPromptText(result);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -70,8 +87,12 @@ public class BasicCalculatorActivity extends AppCompatActivity {
         fourButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String result = BasicCalculator.setNumber(4);
-                setPromptText(result);
+                try {
+                    String result = BasicCalculator.setNumber(4);
+                    setPromptText(result);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -79,8 +100,12 @@ public class BasicCalculatorActivity extends AppCompatActivity {
         fiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String result = BasicCalculator.setNumber(5);
-                setPromptText(result);
+                try {
+                    String result = BasicCalculator.setNumber(5);
+                    setPromptText(result);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -88,8 +113,12 @@ public class BasicCalculatorActivity extends AppCompatActivity {
         sixButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String result = BasicCalculator.setNumber(6);
-                setPromptText(result);
+                try {
+                    String result = BasicCalculator.setNumber(6);
+                    setPromptText(result);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -97,8 +126,12 @@ public class BasicCalculatorActivity extends AppCompatActivity {
         sevenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String result = BasicCalculator.setNumber(7);
-                setPromptText(result);
+                try {
+                    String result = BasicCalculator.setNumber(7);
+                    setPromptText(result);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -106,8 +139,12 @@ public class BasicCalculatorActivity extends AppCompatActivity {
         eightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String result = BasicCalculator.setNumber(8);
-                setPromptText(result);
+                try {
+                    String result = BasicCalculator.setNumber(8);
+                    setPromptText(result);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -115,8 +152,12 @@ public class BasicCalculatorActivity extends AppCompatActivity {
         nineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String result = BasicCalculator.setNumber(9);
-                setPromptText(result);
+                try {
+                    String result = BasicCalculator.setNumber(9);
+                    setPromptText(result);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
