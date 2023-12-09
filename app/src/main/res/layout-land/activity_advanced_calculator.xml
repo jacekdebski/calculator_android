@@ -17,7 +17,7 @@
         android:text="@string/prompt"
         android:textAlignment="textEnd"
         android:textColor="@color/black"
-        android:textSize="64dp" />
+        android:textSize="50dp" />
 
     <LinearLayout
         android:id="@+id/buttonsLayout"
@@ -28,7 +28,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="50dp"
             android:orientation="horizontal">
 
             <Button
@@ -39,108 +39,10 @@
                 android:text="Basic Calculator" />
 
         </LinearLayout>
-
+        
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/backspaceButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="bksp" />
-
-            <Button
-                android:id="@+id/allClearButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="AC" />
-
-            <Button
-                android:id="@+id/clearButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="C" />
-
-            <Button
-                android:id="@+id/changeSignButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="+/-" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/squareRootButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="sqrt" />
-
-            <Button
-                android:id="@+id/customExponentiationButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="x^y" />
-
-            <Button
-                android:id="@+id/exponentiationToPowerTwoButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="x^2" />
-
-            <Button
-                android:id="@+id/naturalLogarithmButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="ln" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/percentButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="%" />
-
-            <Button
-                android:id="@+id/customLogarithmButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="log" />
-
-            <Button
-                android:id="@+id/sinButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="sin (radius)" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="50dp"
             android:orientation="horizontal">
 
             <Button
@@ -164,11 +66,32 @@
                 android:layout_weight="1"
                 android:text="cot (radius)" />
 
+            <Button
+                android:id="@+id/sinButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="sin (radius)" />
+
+            <Button
+                android:id="@+id/squareRootButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="sqrt" />
+
+            <Button
+                android:id="@+id/percentButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="%" />
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="50dp"
             android:orientation="horizontal">
 
             <Button
@@ -199,11 +122,25 @@
                 android:layout_weight="1"
                 android:text="/" />
 
+            <Button
+                android:id="@+id/backspaceButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="bksp" />
+
+            <Button
+                android:id="@+id/customExponentiationButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="x^y" />
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="50dp"
             android:orientation="horizontal">
 
             <Button
@@ -234,12 +171,25 @@
                 android:layout_weight="1"
                 android:text="*" />
 
+            <Button
+                android:id="@+id/allClearButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="AC" />
+
+            <Button
+                android:id="@+id/exponentiationToPowerTwoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="x^2" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="50dp"
             android:orientation="horizontal">
 
             <Button
@@ -270,11 +220,25 @@
                 android:layout_weight="1"
                 android:text="-" />
 
+            <Button
+                android:id="@+id/clearButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="C" />
+
+            <Button
+                android:id="@+id/naturalLogarithmButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="ln" />
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="50dp"
             android:orientation="horizontal">
 
             <Button
@@ -304,6 +268,20 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="+" />
+
+            <Button
+                android:id="@+id/changeSignButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="+/-" />
+
+            <Button
+                android:id="@+id/customLogarithmButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="log" />
 
         </LinearLayout>
 
