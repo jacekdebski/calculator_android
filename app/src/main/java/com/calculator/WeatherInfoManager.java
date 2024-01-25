@@ -20,19 +20,19 @@ public class WeatherInfoManager {
         });
     }
 
-    void setWeatherInfoData (WeatherInfoData weatherInfoData) {
+    private void setWeatherInfoData(WeatherInfoData weatherInfoData) {
         this.weatherInfoData = weatherInfoData;
     }
 
-    WeatherInfoData getWeatherInfoData() {
+    public WeatherInfoData getWeatherInfoData() {
         return this.weatherInfoData;
     }
 
-    void setWeatherInfoLoadListener(WeatherInfoLoadListener listener) {
+    public void setWeatherInfoLoadListener(WeatherInfoLoadListener listener) {
         this.weatherInfoLoadListener = listener;
     }
 
-    void getWeatherInfo() {
+    public void getWeatherInfo() {
         this.weatherInfoAPIController.fetchWeatherInfo();
 //        this.weatherInfoAPIController.fetchGeographicalCoordinates();
     }
