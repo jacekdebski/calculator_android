@@ -17,54 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, WeatherInfoActivity.class);
         startActivity(intent);
-
-        Button exitButton = findViewById(R.id.exitButton);
-        exitButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Log.i("Main Activity", "ExitButton clicked. Calculator will close.");
-                finish();
-            }
-        });
-
-        Button aboutButton = findViewById(R.id.aboutButton);
-        aboutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openAboutActivity();
-            }
-        });
-
-        Button basicCalculatorButton = findViewById(R.id.basicCalculatorButton);
-        basicCalculatorButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openBasicCalculatorActivity();
-            }
-        });
-
-        Button advancedCalculatorButton = findViewById(R.id.advancedCalculatorButton);
-        advancedCalculatorButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openAdvancedCalculatorActivity();
-            }
-        });
     }
 
-    private void openAboutActivity() {
-        Intent intent = new Intent(this, AboutActivity.class);
-        startActivity(intent);
-    }
-
-    private void openBasicCalculatorActivity() {
-        Intent intent = new Intent(this, BasicCalculatorActivity.class);
-        startActivity(intent);
-    }
-
-    private void openAdvancedCalculatorActivity() {
-        Intent intent = new Intent(this, AdvancedCalculatorActivity.class);
-        startActivity(intent);
-    }
 }
