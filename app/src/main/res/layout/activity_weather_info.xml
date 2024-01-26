@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.fragment.app.FragmentContainerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/weather_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
@@ -34,12 +33,12 @@
             android:text="Additional Weather Info" />
 
         <Button
-            android:id="@+id/refreshButton"
+            android:id="@+id/settingsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="Refresh" />
+            android:text="Settings" />
 
     </LinearLayout>
 

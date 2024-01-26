@@ -48,11 +48,12 @@ public class WeatherInfoActivity extends AppCompatActivity {
             }
         });
 
-        Button refreshButton = findViewById(R.id.refreshButton);
-        refreshButton.setOnClickListener(new View.OnClickListener() {
+        Button settingsButton = findViewById(R.id.settingsButton);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                weatherInfoManager.tryToFetchWeatherInfoData();
+                SettingsFragment settingsFragment = new SettingsFragment();
+                setFragment(settingsFragment);
             }
         });
 
