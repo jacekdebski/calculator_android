@@ -39,18 +39,20 @@ public class WeatherInfoManager {
     }
 
     public void tryToFetchWeatherInfoData() {
-        if (checkInternetConnection()) {
-            this.weatherInfoAPIController.fetchWeatherInfo();
-//        this.weatherInfoAPIController.fetchGeographicalCoordinates();
-        } else {
-            WeatherInfoData weatherInfoData = loadWeatherInfoDataFromSharedPreferences();
-//            Log.i("WeatherInfoManager", "in getWeatherInfo after loadWeatherInfoData" + this.weatherInfoData.weatherMain);
-            Log.i("WeatherInfoManager", "in getWeatherInfo after loadWeatherInfoData");
-            setWeatherInfoData(weatherInfoData);
-            Log.i("WeatherInfoManager", "in getWeatherInfo after setWeatherInfoData" + this.weatherInfoData.weatherMain);
-            weatherInfoLoadListener.onLoadWeatherInfo();
-            Log.i("WeatherInfoManager", "no internet connection");
-        }
+
+        weatherInfoAPIController.fetchGeographicalCoordinates();
+//        if (checkInternetConnection()) {
+//            this.weatherInfoAPIController.fetchWeatherInfo();
+////        this.weatherInfoAPIController.fetchGeographicalCoordinates();
+//        } else {
+//            WeatherInfoData weatherInfoData = loadWeatherInfoDataFromSharedPreferences();
+////            Log.i("WeatherInfoManager", "in getWeatherInfo after loadWeatherInfoData" + this.weatherInfoData.weatherMain);
+//            Log.i("WeatherInfoManager", "in getWeatherInfo after loadWeatherInfoData");
+//            setWeatherInfoData(weatherInfoData);
+//            Log.i("WeatherInfoManager", "in getWeatherInfo after setWeatherInfoData" + this.weatherInfoData.weatherMain);
+//            weatherInfoLoadListener.onLoadWeatherInfo();
+//            Log.i("WeatherInfoManager", "no internet connection");
+//        }
     }
 
     private void setWeatherInfoData(WeatherInfoData weatherInfoData) {

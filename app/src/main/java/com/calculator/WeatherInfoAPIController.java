@@ -7,6 +7,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -16,6 +17,7 @@ import org.json.JSONObject;
 
 public class WeatherInfoAPIController {
     private static Context context;
+    private String baseURL = "https://api.openweathermap.org";
     private String appid = "977cfc1875e2eee739da6acd35ad0f45";
     private WeatherInfoFetchDataListener weatherInfoFetchDataListener;
 
@@ -27,9 +29,9 @@ public class WeatherInfoAPIController {
         this.weatherInfoFetchDataListener = listener;
     }
 
-    void fetchWeatherInfo() {
+    void fetchWeatherInfo(double latitude, double longitude) {
         RequestQueue queue = Volley.newRequestQueue(this.context.getApplicationContext());
-        String url = "https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=977cfc1875e2eee739da6acd35ad0f45";
+        String url = baseURL + "/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=" + appid;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -108,15 +110,22 @@ public class WeatherInfoAPIController {
 
     void fetchGeographicalCoordinates() {
         RequestQueue queue = Volley.newRequestQueue(this.context.getApplicationContext());
-        String url = "http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=977cfc1875e2eee739da6acd35ad0f45";
+        String url = baseURL + "/geo/1.0/direct?q=London&limit=5&appid=" + appid;
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
 
                     @Override
-                    public void onResponse(JSONObject response) {
-                        Log.i("Main Activity", "Response is:" + response);
-//                        textView.setText("Response: " + response.toString());
+                    public void onResponse(JSONArray response) {
+                        try {
+                            JSONObject jsonObject = response.getJSONObject(0);
+                            double latitude = jsonObject.optDouble("lat");
+                            double longitude = jsonObject.optDouble("lon");
+                            Log.i("WeatherAPIController", "latitude: " + latitude + " longitude:" + longitude);
+                            fetchWeatherInfo(latitude, longitude);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }, new Response.ErrorListener() {
 
