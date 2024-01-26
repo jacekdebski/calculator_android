@@ -13,19 +13,18 @@ import android.widget.Button;
 
 public class WeatherInfoActivity extends AppCompatActivity {
 
-    private static WeatherInfoManager weatherInfoManager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        weatherInfoManager = new WeatherInfoManager(getApplicationContext());
+        WeatherInfoManager.init(getApplicationContext());
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .setReorderingAllowed(true)
                     .add(R.id.weather_fragment, BasicWeatherInfoFragment.class, null)
                     .commit();
+
         }
         setContentView(R.layout.activity_weather_info);
 
@@ -54,10 +53,11 @@ public class WeatherInfoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 SettingsFragment settingsFragment = new SettingsFragment();
                 setFragment(settingsFragment);
+                WeatherInfoManager.tryToFetchWeatherInfoData();
             }
         });
 
-        weatherInfoManager.setWeatherInfoLoadListener(new WeatherInfoLoadListener() {
+        WeatherInfoManager.setWeatherInfoLoadListener(new WeatherInfoLoadListener() {
             @Override
             public void onLoadWeatherInfo() {
                 Log.i("Main Activity", "onLoadWeatherInfo");
@@ -74,7 +74,7 @@ public class WeatherInfoActivity extends AppCompatActivity {
     }
 
     private void setWeatherDataToActiveFragment() {
-        WeatherInfoData weatherInfoData = weatherInfoManager.getWeatherInfoData();
+        WeatherInfoData weatherInfoData = WeatherInfoManager.getWeatherInfoData();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         WeatherInfoFragment activeFragment = (WeatherInfoFragment) fragmentManager.findFragmentById(R.id.weather_fragment);

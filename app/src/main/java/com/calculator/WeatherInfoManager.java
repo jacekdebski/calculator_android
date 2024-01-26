@@ -8,39 +8,40 @@ import android.net.NetworkCapabilities;
 import android.util.Log;
 
 public class WeatherInfoManager {
-    private static WeatherInfoAPIController weatherInfoAPIController;
-    private WeatherInfoLoadListener weatherInfoLoadListener;
-    private static WeatherInfoData weatherInfoData;
-    private Context context;
+    private static WeatherInfoAPIController mWeatherInfoAPIController;
+    private static WeatherInfoLoadListener mWeatherInfoLoadListener;
+    private static WeatherInfoData mWeatherInfoData;
+    private static Context mContext;
 
-    WeatherInfoManager(Context context) {
-        this.context = context;
-        weatherInfoAPIController = new WeatherInfoAPIController(this.context);
+    public static void init(Context context) {
+        Log.i("WeatherInfoManager", "Constructor");
 
-        weatherInfoAPIController.setWeatherInfoFetchDataListener(new WeatherInfoFetchDataListener() {
+        mContext = context;
+        mWeatherInfoAPIController = new WeatherInfoAPIController(mContext);
+
+        mWeatherInfoAPIController.setWeatherInfoFetchDataListener(new WeatherInfoFetchDataListener() {
 
             @Override
             public void onFetchWeatherInfo(WeatherInfoData weatherInfoData) {
                 setWeatherInfoData(weatherInfoData);
                 saveWeatherInfoDataToSharedPreferences(weatherInfoData);
-                weatherInfoLoadListener.onLoadWeatherInfo();
+                mWeatherInfoLoadListener.onLoadWeatherInfo();
             }
         });
 
-        this.tryToFetchWeatherInfoData();
+        tryToFetchWeatherInfoData();
     }
 
-    public WeatherInfoData getWeatherInfoData() {
-        return this.weatherInfoData;
+    public static WeatherInfoData getWeatherInfoData() {
+        return mWeatherInfoData;
     }
 
-    public void setWeatherInfoLoadListener(WeatherInfoLoadListener listener) {
-        this.weatherInfoLoadListener = listener;
+    public static void setWeatherInfoLoadListener(WeatherInfoLoadListener listener) {
+        mWeatherInfoLoadListener = listener;
     }
 
-    public void tryToFetchWeatherInfoData() {
-
-        weatherInfoAPIController.fetchGeographicalCoordinates();
+    public static void tryToFetchWeatherInfoData() {
+        mWeatherInfoAPIController.fetchGeographicalCoordinates();
 //        if (checkInternetConnection()) {
 //            this.weatherInfoAPIController.fetchWeatherInfo();
 ////        this.weatherInfoAPIController.fetchGeographicalCoordinates();
@@ -55,12 +56,12 @@ public class WeatherInfoManager {
 //        }
     }
 
-    private void setWeatherInfoData(WeatherInfoData weatherInfoData) {
-        this.weatherInfoData = weatherInfoData;
+    private static void setWeatherInfoData(WeatherInfoData weatherInfoData) {
+        mWeatherInfoData = weatherInfoData;
     }
 
     private boolean checkInternetConnection() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
         boolean isInternetConnection = false;
 
         if (connectivityManager != null) {
@@ -78,8 +79,8 @@ public class WeatherInfoManager {
         return isInternetConnection;
     }
 
-    private void saveWeatherInfoDataToSharedPreferences(WeatherInfoData weatherInfoData) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences("WeatherDataFile", Context.MODE_PRIVATE);
+    private static void saveWeatherInfoDataToSharedPreferences(WeatherInfoData weatherInfoData) {
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences("WeatherDataFile", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("weatherMain", weatherInfoData.weatherMain);
         editor.putString("weatherDescription", weatherInfoData.weatherDescription);
@@ -88,12 +89,12 @@ public class WeatherInfoManager {
         editor.commit();
     }
 
-    private WeatherInfoData loadWeatherInfoDataFromSharedPreferences() {
-        SharedPreferences sharedPreferences = context.getSharedPreferences("WeatherDataFile", Context.MODE_PRIVATE);
+    private static WeatherInfoData loadWeatherInfoDataFromSharedPreferences() {
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences("WeatherDataFile", Context.MODE_PRIVATE);
         String weatherMain = sharedPreferences.getString("weatherMain", "no data");
         String weatherDescription = sharedPreferences.getString("weatherDescription", "no data");
         String weatherIcon = sharedPreferences.getString("weatherIcon", "no data");
-        Log.i("WeatherInfoManager", weatherMain + " " + weatherDescription  + " " + weatherIcon);
+        Log.i("WeatherInfoManager", weatherMain + " " + weatherDescription + " " + weatherIcon);
         return new WeatherInfoData(weatherMain, weatherDescription, weatherIcon);
     }
 }
