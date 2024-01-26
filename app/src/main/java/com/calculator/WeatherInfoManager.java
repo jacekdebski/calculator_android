@@ -28,8 +28,6 @@ public class WeatherInfoManager {
                 mWeatherInfoLoadListener.onLoadWeatherInfo();
             }
         });
-
-        tryToFetchWeatherInfoData();
     }
 
     public static WeatherInfoData getWeatherInfoData() {
@@ -40,8 +38,8 @@ public class WeatherInfoManager {
         mWeatherInfoLoadListener = listener;
     }
 
-    public static void tryToFetchWeatherInfoData() {
-        mWeatherInfoAPIController.fetchGeographicalCoordinates();
+    public static void tryToFetchWeatherInfoData(String location) {
+        mWeatherInfoAPIController.fetchGeographicalCoordinates(location);
 //        if (checkInternetConnection()) {
 //            this.weatherInfoAPIController.fetchWeatherInfo();
 ////        this.weatherInfoAPIController.fetchGeographicalCoordinates();

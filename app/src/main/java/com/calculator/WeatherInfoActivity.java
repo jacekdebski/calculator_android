@@ -53,7 +53,6 @@ public class WeatherInfoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 SettingsFragment settingsFragment = new SettingsFragment();
                 setFragment(settingsFragment);
-                WeatherInfoManager.tryToFetchWeatherInfoData();
             }
         });
 
@@ -77,10 +76,12 @@ public class WeatherInfoActivity extends AppCompatActivity {
         WeatherInfoData weatherInfoData = WeatherInfoManager.getWeatherInfoData();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        WeatherInfoFragment activeFragment = (WeatherInfoFragment) fragmentManager.findFragmentById(R.id.weather_fragment);
+        Fragment activeFragment = fragmentManager.findFragmentById(R.id.weather_fragment);
 
         if (activeFragment != null) {
-            activeFragment.setWeatherInfoData(weatherInfoData);
+            if (activeFragment instanceof WeatherInfoFragment) {
+                ((WeatherInfoFragment) activeFragment).setWeatherInfoData(weatherInfoData);
+            }
         }
     }
 }

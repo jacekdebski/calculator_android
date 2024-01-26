@@ -108,9 +108,9 @@ public class WeatherInfoAPIController {
         queue.add(jsonObjectRequest);
     }
 
-    void fetchGeographicalCoordinates() {
+    void fetchGeographicalCoordinates(String location) {
         RequestQueue queue = Volley.newRequestQueue(this.context.getApplicationContext());
-        String url = baseURL + "/geo/1.0/direct?q=London&limit=5&appid=" + appid;
+        String url = baseURL + "/geo/1.0/direct?q=" + location + "&limit=5&appid=" + appid;
 
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
@@ -131,7 +131,7 @@ public class WeatherInfoAPIController {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.i("Main Activity", "That didn't work!" + error);
+                        Log.i("WeatherAPIController", "That didn't work!" + error);
                     }
                 });
 
