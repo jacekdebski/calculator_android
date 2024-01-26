@@ -26,6 +26,8 @@ public class WeatherInfoManager {
                 weatherInfoLoadListener.onLoadWeatherInfo();
             }
         });
+
+        this.getWeatherInfo();
     }
 
     public WeatherInfoData getWeatherInfoData() {
