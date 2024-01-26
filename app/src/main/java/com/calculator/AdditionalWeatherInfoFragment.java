@@ -45,6 +45,11 @@ public class AdditionalWeatherInfoFragment extends Fragment implements WeatherIn
         return inflater.inflate(R.layout.fragment_additional_weather_info, container, false);
     }
 
+    public void onResume() {
+        super.onResume();
+        setWeatherInfoData(WeatherInfoManager.getWeatherInfoData());
+    }
+
     @Override
     public void setWeatherInfoData(WeatherInfoData weatherInfoData) {
         Log.i("AdditionalWeatherInfoFragment", "setWeatherInfoData");

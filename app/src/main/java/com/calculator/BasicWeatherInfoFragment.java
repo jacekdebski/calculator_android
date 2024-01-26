@@ -50,6 +50,12 @@ public class BasicWeatherInfoFragment extends Fragment implements WeatherInfoFra
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        setWeatherInfoData(WeatherInfoManager.getWeatherInfoData());
+    }
+
+    @Override
     public void setWeatherInfoData(WeatherInfoData weatherInfoData) {
         Log.i("BasicWeatherInfoFragment", "setWeatherInfoData");
 

@@ -28,6 +28,8 @@ public class WeatherInfoManager {
                 mWeatherInfoLoadListener.onLoadWeatherInfo();
             }
         });
+
+        mWeatherInfoData = loadWeatherInfoDataFromSharedPreferences();
     }
 
     public static WeatherInfoData getWeatherInfoData() {
