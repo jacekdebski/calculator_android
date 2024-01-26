@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class WeatherInfoActivity extends AppCompatActivity {
 
@@ -53,7 +52,7 @@ public class WeatherInfoActivity extends AppCompatActivity {
         refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                weatherInfoManager.getWeatherInfo();
+                weatherInfoManager.tryToFetchWeatherInfoData();
             }
         });
 

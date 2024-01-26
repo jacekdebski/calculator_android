@@ -27,7 +27,7 @@ public class WeatherInfoManager {
             }
         });
 
-        this.getWeatherInfo();
+        this.tryToFetchWeatherInfoData();
     }
 
     public WeatherInfoData getWeatherInfoData() {
@@ -38,7 +38,7 @@ public class WeatherInfoManager {
         this.weatherInfoLoadListener = listener;
     }
 
-    public void getWeatherInfo() {
+    public void tryToFetchWeatherInfoData() {
         if (checkInternetConnection()) {
             this.weatherInfoAPIController.fetchWeatherInfo();
 //        this.weatherInfoAPIController.fetchGeographicalCoordinates();
