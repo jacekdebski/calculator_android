@@ -22,8 +22,7 @@ public class WeatherInfoManager {
             @Override
             public void onFetchWeatherInfo(WeatherInfoData weatherInfoData) {
                 setWeatherInfoData(weatherInfoData);
-                saveWeatherInfoDataToSharedPreferences();
-                loadWeatherInfoDataFromSharedPreferences();
+                saveWeatherInfoDataToSharedPreferences(weatherInfoData);
                 weatherInfoLoadListener.onLoadWeatherInfo();
             }
         });
@@ -42,6 +41,12 @@ public class WeatherInfoManager {
             this.weatherInfoAPIController.fetchWeatherInfo();
 //        this.weatherInfoAPIController.fetchGeographicalCoordinates();
         } else {
+            WeatherInfoData weatherInfoData = loadWeatherInfoDataFromSharedPreferences();
+//            Log.i("WeatherInfoManager", "in getWeatherInfo after loadWeatherInfoData" + this.weatherInfoData.weatherMain);
+            Log.i("WeatherInfoManager", "in getWeatherInfo after loadWeatherInfoData");
+            setWeatherInfoData(weatherInfoData);
+            Log.i("WeatherInfoManager", "in getWeatherInfo after setWeatherInfoData" + this.weatherInfoData.weatherMain);
+            weatherInfoLoadListener.onLoadWeatherInfo();
             Log.i("WeatherInfoManager", "no internet connection");
         }
     }
@@ -69,17 +74,22 @@ public class WeatherInfoManager {
         return isInternetConnection;
     }
 
-    private void saveWeatherInfoDataToSharedPreferences() {
+    private void saveWeatherInfoDataToSharedPreferences(WeatherInfoData weatherInfoData) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("WeatherDataFile", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("abc", "abc_value");
-        editor.apply(); //it is asynchronous
-
+        editor.putString("weatherMain", weatherInfoData.weatherMain);
+        editor.putString("weatherDescription", weatherInfoData.weatherDescription);
+        editor.putString("weatherDescription", weatherInfoData.weatherDescription);
+//        editor.apply(); //it is asynchronous
+        editor.commit();
     }
 
-    private void loadWeatherInfoDataFromSharedPreferences() {
+    private WeatherInfoData loadWeatherInfoDataFromSharedPreferences() {
         SharedPreferences sharedPreferences = context.getSharedPreferences("WeatherDataFile", Context.MODE_PRIVATE);
-        String res = sharedPreferences.getString("abc", "default");
-        Log.i("Main Activity", res);
+        String weatherMain = sharedPreferences.getString("weatherMain", "no data");
+        String weatherDescription = sharedPreferences.getString("weatherDescription", "no data");
+        String weatherIcon = sharedPreferences.getString("weatherIcon", "no data");
+        Log.i("WeatherInfoManager", weatherMain + " " + weatherDescription  + " " + weatherIcon);
+        return new WeatherInfoData(weatherMain, weatherDescription, weatherIcon);
     }
 }

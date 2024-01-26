@@ -37,7 +37,6 @@ public class WeatherInfoActivity extends AppCompatActivity {
                 Fragment basicWeatherInfoFragment = new BasicWeatherInfoFragment();
                 setFragment(basicWeatherInfoFragment);
 
-                weatherInfoManager.getWeatherInfo();
             }
         });
 
@@ -50,11 +49,22 @@ public class WeatherInfoActivity extends AppCompatActivity {
             }
         });
 
+        Button refreshButton = findViewById(R.id.refreshButton);
+        refreshButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                weatherInfoManager.getWeatherInfo();
+            }
+        });
+
         weatherInfoManager.setWeatherInfoLoadListener(new WeatherInfoLoadListener() {
             @Override
             public void onLoadWeatherInfo() {
-                Log.i("Main Activity", "onFetchWeatherInfo");
+                Log.i("Main Activity", "onLoadWeatherInfo");
                 WeatherInfoData weatherInfoData = weatherInfoManager.getWeatherInfoData();
+
+                Log.i("WeatherInfoManager", "in onLoadWeatherInfo: " + weatherInfoData.weatherMain + " " + weatherInfoData.weatherDescription + " " + weatherInfoData.weatherIcon);
+
                 setWeatherMainText(weatherInfoData.weatherMain);
             }
         });
@@ -68,8 +78,11 @@ public class WeatherInfoActivity extends AppCompatActivity {
     }
 
     private void setWeatherMainText(String weatherMainText) {
+        Log.i("Main Activity", "in setWeatherMainText: " + weatherMainText);
+        String weatherMain = weatherMainText;
+
         TextView weatherMainTextView = findViewById(R.id.weatherDescriptionTextView);
-        weatherMainTextView.setText(weatherMainText);
+        weatherMainTextView.setText(weatherMain);
     }
 }
 
