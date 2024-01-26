@@ -4,11 +4,13 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-public class BasicWeatherInfoFragment extends Fragment {
+public class BasicWeatherInfoFragment extends Fragment implements WeatherInfoFragment {
 
     private static final String WEATHER_MAIN = "";
     private static final String WEATHER_DESCRIPTION = "";
@@ -45,5 +47,14 @@ public class BasicWeatherInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_basic_weather_info, container, false);
+    }
+
+    @Override
+    public void setWeatherInfoData(WeatherInfoData weatherInfoData) {
+        Log.i("BasicWeatherInfoFragment", "setWeatherInfoData");
+
+        View view = getView();
+        TextView weatherMainTextView = view.findViewById(R.id.weatherDescriptionTextView);
+        weatherMainTextView.setText(weatherInfoData.weatherMain);
     }
 }

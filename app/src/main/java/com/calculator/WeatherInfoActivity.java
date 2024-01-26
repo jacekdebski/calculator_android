@@ -61,11 +61,7 @@ public class WeatherInfoActivity extends AppCompatActivity {
             @Override
             public void onLoadWeatherInfo() {
                 Log.i("Main Activity", "onLoadWeatherInfo");
-                WeatherInfoData weatherInfoData = weatherInfoManager.getWeatherInfoData();
-
-                Log.i("WeatherInfoManager", "in onLoadWeatherInfo: " + weatherInfoData.weatherMain + " " + weatherInfoData.weatherDescription + " " + weatherInfoData.weatherIcon);
-
-                setWeatherMainText(weatherInfoData.weatherMain);
+                setWeatherDataToActiveFragment();
             }
         });
     }
@@ -77,12 +73,15 @@ public class WeatherInfoActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    private void setWeatherMainText(String weatherMainText) {
-        Log.i("Main Activity", "in setWeatherMainText: " + weatherMainText);
-        String weatherMain = weatherMainText;
+    private void setWeatherDataToActiveFragment() {
+        WeatherInfoData weatherInfoData = weatherInfoManager.getWeatherInfoData();
 
-        TextView weatherMainTextView = findViewById(R.id.weatherDescriptionTextView);
-        weatherMainTextView.setText(weatherMain);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        WeatherInfoFragment activeFragment = (WeatherInfoFragment) fragmentManager.findFragmentById(R.id.weather_fragment);
+
+        if (activeFragment != null) {
+            activeFragment.setWeatherInfoData(weatherInfoData);
+        }
     }
 }
 
