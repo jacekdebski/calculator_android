@@ -7,11 +7,16 @@ import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class WeatherInfoManager {
     private static WeatherInfoAPIController mWeatherInfoAPIController;
     private static WeatherInfoLoadListener mWeatherInfoLoadListener;
     private static WeatherInfoData mWeatherInfoData;
     private static Context mContext;
+    private static Map<String, GeographicalCoordinates> mFavoriteLocationsMap;
 
     public static void init(Context context) {
         Log.i("WeatherInfoManager", "Constructor");
@@ -34,6 +39,10 @@ public class WeatherInfoManager {
 
     public static WeatherInfoData getWeatherInfoData() {
         return mWeatherInfoData;
+    }
+
+    public static Map<String, GeographicalCoordinates> getFavoriteLocationsMap() {
+        return mFavoriteLocationsMap;
     }
 
     public static void setWeatherInfoLoadListener(WeatherInfoLoadListener listener) {

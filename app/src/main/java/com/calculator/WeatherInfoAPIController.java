@@ -29,9 +29,9 @@ public class WeatherInfoAPIController {
         this.weatherInfoFetchDataListener = listener;
     }
 
-    void fetchWeatherInfo(double latitude, double longitude) {
+    void fetchWeatherInfo(GeographicalCoordinates geographicalCoordinates) {
         RequestQueue queue = Volley.newRequestQueue(this.context.getApplicationContext());
-        String url = baseURL + "/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=" + appid;
+        String url = baseURL + "/data/2.5/weather?lat=" + geographicalCoordinates.latitude + "&lon=" + geographicalCoordinates.longitude + "&appid=" + appid;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -122,7 +122,8 @@ public class WeatherInfoAPIController {
                             double latitude = jsonObject.optDouble("lat");
                             double longitude = jsonObject.optDouble("lon");
                             Log.i("WeatherAPIController", "latitude: " + latitude + " longitude:" + longitude);
-                            fetchWeatherInfo(latitude, longitude);
+                            GeographicalCoordinates geographicalCoordinates = new GeographicalCoordinates(latitude, longitude);
+                            fetchWeatherInfo(geographicalCoordinates);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
