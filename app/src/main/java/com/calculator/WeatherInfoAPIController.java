@@ -49,10 +49,13 @@ public class WeatherInfoAPIController {
                             String weatherMain = weatherObject.getString("main");
                             String weatherDescription = weatherObject.getString("description");
                             String weatherIcon = weatherObject.getString("icon");
+                            String locationName = response.getString("name");
+
 
                             if (weatherInfoFetchDataListener != null) {
                                 Log.i("Main Activity", "weatherInfoFetchDataListener in onResponse");
-                                weatherInfoFetchDataListener.onFetchWeatherInfo(new WeatherInfoData(weatherMain, weatherDescription, weatherIcon));
+                                Location location = new Location(geographicalCoordinates, locationName);
+                                weatherInfoFetchDataListener.onFetchWeatherInfo(new WeatherInfoData(location, weatherMain, weatherDescription, weatherIcon));
                             } else {
                                 Log.i("Main Activity", "weatherInfoFetchDataListener is null");
                             }
@@ -91,7 +94,6 @@ public class WeatherInfoAPIController {
 //                            int timezone = response.getInt("timezone");
 //
 //                            int cityId = response.getInt("id");
-//                            String cityName = response.getString("name");
 //                            int cod = response.getInt("cod");
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -119,8 +121,8 @@ public class WeatherInfoAPIController {
                     public void onResponse(JSONArray response) {
                         try {
                             JSONObject jsonObject = response.getJSONObject(0);
-                            double latitude = jsonObject.optDouble("lat");
-                            double longitude = jsonObject.optDouble("lon");
+                            float latitude = (float) jsonObject.optDouble("lat");
+                            float longitude = (float) jsonObject.optDouble("lon");
                             Log.i("WeatherAPIController", "latitude: " + latitude + " longitude:" + longitude);
                             GeographicalCoordinates geographicalCoordinates = new GeographicalCoordinates(latitude, longitude);
                             fetchWeatherInfo(geographicalCoordinates);

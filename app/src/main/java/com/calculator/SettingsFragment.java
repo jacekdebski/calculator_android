@@ -64,6 +64,14 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        Button addToFavoriteLocationButton = view.findViewById(R.id.addToFavoriteLocationButton);
+        addToFavoriteLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WeatherInfoManager.addLocationToFavorite(WeatherInfoManager.getWeatherInfoData().location);
+            }
+        });
+
         ArrayList<FavoriteLocationFragment> favoriteLocationFragmentArrayList = new ArrayList<>();
         ArrayList<Location> favoriteLocationsArray = WeatherInfoManager.getFavoriteLocationsArray();
         ViewPager viewPager = view.findViewById(R.id.favoritePlacesViewPager);

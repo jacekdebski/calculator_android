@@ -1,10 +1,10 @@
 package com.calculator;
 
 public class GeographicalCoordinates {
-    double latitude;
-    double longitude;
+    float latitude;
+    float longitude;
 
-    GeographicalCoordinates(double latitude, double longitude) {
+    GeographicalCoordinates(float latitude, float longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }

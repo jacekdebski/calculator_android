@@ -44,6 +44,10 @@ public class WeatherInfoManager {
         return mFavoriteLocationsArray;
     }
 
+    public static void addLocationToFavorite(Location location) {
+        mFavoriteLocationsArray.add(location);
+    }
+
     public static void setWeatherInfoLoadListener(WeatherInfoLoadListener listener) {
         mWeatherInfoLoadListener = listener;
     }
@@ -90,6 +94,9 @@ public class WeatherInfoManager {
     private static void saveWeatherInfoDataToSharedPreferences(WeatherInfoData weatherInfoData) {
         SharedPreferences sharedPreferences = mContext.getSharedPreferences("WeatherDataFile", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("locationName", weatherInfoData.location.locationName);
+        editor.putFloat("latitude", weatherInfoData.location.geographicalCoordinates.latitude);
+        editor.putFloat("longitude", weatherInfoData.location.geographicalCoordinates.longitude);
         editor.putString("weatherMain", weatherInfoData.weatherMain);
         editor.putString("weatherDescription", weatherInfoData.weatherDescription);
         editor.putString("weatherDescription", weatherInfoData.weatherDescription);
@@ -99,10 +106,15 @@ public class WeatherInfoManager {
 
     private static WeatherInfoData loadWeatherInfoDataFromSharedPreferences() {
         SharedPreferences sharedPreferences = mContext.getSharedPreferences("WeatherDataFile", Context.MODE_PRIVATE);
+        String locationName = sharedPreferences.getString("locationName", "no data");
+        Float latitude = sharedPreferences.getFloat("latitude", 0);
+        Float longitude = sharedPreferences.getFloat("longitude", 0);
+        GeographicalCoordinates geographicalCoordinates = new GeographicalCoordinates(latitude, longitude);
+        Location location = new Location(geographicalCoordinates, locationName);
         String weatherMain = sharedPreferences.getString("weatherMain", "no data");
         String weatherDescription = sharedPreferences.getString("weatherDescription", "no data");
         String weatherIcon = sharedPreferences.getString("weatherIcon", "no data");
         Log.i("WeatherInfoManager", weatherMain + " " + weatherDescription + " " + weatherIcon);
-        return new WeatherInfoData(weatherMain, weatherDescription, weatherIcon);
+        return new WeatherInfoData(location, weatherMain, weatherDescription, weatherIcon);
     }
 }

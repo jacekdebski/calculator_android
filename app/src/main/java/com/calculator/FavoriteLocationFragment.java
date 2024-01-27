@@ -24,7 +24,7 @@ public class FavoriteLocationFragment extends Fragment {
     public static FavoriteLocationFragment newInstance(Location favoriteLocation) {
         FavoriteLocationFragment fragment = new FavoriteLocationFragment();
         Bundle args = new Bundle();
-        args.putString(LOCATION, favoriteLocation.location);
+        args.putString(LOCATION, favoriteLocation.locationName);
         args.putDouble(String.valueOf(LATITUDE), favoriteLocation.geographicalCoordinates.latitude);
         args.putDouble(String.valueOf(LONGITUDE), favoriteLocation.geographicalCoordinates.longitude);
         fragment.setArguments(args);
