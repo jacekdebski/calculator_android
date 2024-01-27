@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,5 +61,12 @@ public class SettingsFragment extends Fragment {
                 WeatherInfoManager.tryToFetchWeatherInfoData(location);
             }
         });
+
+        ViewPager viewPager = view.findViewById(R.id.favoritePlacesViewPager);
+
+        FavoriteLocationsAdapter favoriteLocationsAdapter = new FavoriteLocationsAdapter(getActivity().getSupportFragmentManager());
+
+        viewPager.setAdapter(favoriteLocationsAdapter);
+
     }
 }
