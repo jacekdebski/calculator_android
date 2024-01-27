@@ -16,7 +16,7 @@ public class WeatherInfoManager {
     private static WeatherInfoLoadListener mWeatherInfoLoadListener;
     private static WeatherInfoData mWeatherInfoData;
     private static Context mContext;
-    private static Map<String, GeographicalCoordinates> mFavoriteLocationsMap;
+    private static ArrayList<FavoriteLocation> mFavoriteLocationsArray;
 
     public static void init(Context context) {
         Log.i("WeatherInfoManager", "Constructor");
@@ -35,14 +35,15 @@ public class WeatherInfoManager {
         });
 
         mWeatherInfoData = loadWeatherInfoDataFromSharedPreferences();
+        mFavoriteLocationsArray = new ArrayList<FavoriteLocation>(); // TODO: load from file or create empty
     }
 
     public static WeatherInfoData getWeatherInfoData() {
         return mWeatherInfoData;
     }
 
-    public static Map<String, GeographicalCoordinates> getFavoriteLocationsMap() {
-        return mFavoriteLocationsMap;
+    public static ArrayList<FavoriteLocation> getFavoriteLocationsArray() {
+        return mFavoriteLocationsArray;
     }
 
     public static void setWeatherInfoLoadListener(WeatherInfoLoadListener listener) {
