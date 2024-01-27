@@ -1,6 +1,6 @@
 package com.calculator;
 
-public class FavoriteLocation {
+public class Location {
     GeographicalCoordinates geographicalCoordinates;
     String location;
 }

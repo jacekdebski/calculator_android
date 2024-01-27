@@ -21,7 +21,7 @@ public class FavoriteLocationFragment extends Fragment {
     public FavoriteLocationFragment() {
     }
 
-    public static FavoriteLocationFragment newInstance(FavoriteLocation favoriteLocation) {
+    public static FavoriteLocationFragment newInstance(Location favoriteLocation) {
         FavoriteLocationFragment fragment = new FavoriteLocationFragment();
         Bundle args = new Bundle();
         args.putString(LOCATION, favoriteLocation.location);

@@ -8,15 +8,13 @@ import android.net.NetworkCapabilities;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public class WeatherInfoManager {
     private static WeatherInfoAPIController mWeatherInfoAPIController;
     private static WeatherInfoLoadListener mWeatherInfoLoadListener;
     private static WeatherInfoData mWeatherInfoData;
     private static Context mContext;
-    private static ArrayList<FavoriteLocation> mFavoriteLocationsArray;
+    private static ArrayList<Location> mFavoriteLocationsArray;
 
     public static void init(Context context) {
         Log.i("WeatherInfoManager", "Constructor");
@@ -35,14 +33,14 @@ public class WeatherInfoManager {
         });
 
         mWeatherInfoData = loadWeatherInfoDataFromSharedPreferences();
-        mFavoriteLocationsArray = new ArrayList<FavoriteLocation>(); // TODO: load from file or create empty
+        mFavoriteLocationsArray = new ArrayList<Location>(); // TODO: load from file or create empty
     }
 
     public static WeatherInfoData getWeatherInfoData() {
         return mWeatherInfoData;
     }
 
-    public static ArrayList<FavoriteLocation> getFavoriteLocationsArray() {
+    public static ArrayList<Location> getFavoriteLocationsArray() {
         return mFavoriteLocationsArray;
     }
 

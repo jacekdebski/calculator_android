@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class SettingsFragment extends Fragment {
 
@@ -66,11 +65,11 @@ public class SettingsFragment extends Fragment {
         });
 
         ArrayList<FavoriteLocationFragment> favoriteLocationFragmentArrayList = new ArrayList<>();
-        ArrayList<FavoriteLocation> favoriteLocationsArray = WeatherInfoManager.getFavoriteLocationsArray();
+        ArrayList<Location> favoriteLocationsArray = WeatherInfoManager.getFavoriteLocationsArray();
         ViewPager viewPager = view.findViewById(R.id.favoritePlacesViewPager);
 
         for (int i = 0; i < favoriteLocationsArray.size(); i++) {
-            FavoriteLocation favoriteLocation = favoriteLocationsArray.get(i);
+            Location favoriteLocation = favoriteLocationsArray.get(i);
             favoriteLocationFragmentArrayList.add(FavoriteLocationFragment.newInstance(favoriteLocation));
         }
 
