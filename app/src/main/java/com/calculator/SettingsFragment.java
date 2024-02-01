@@ -5,13 +5,17 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -68,21 +72,40 @@ public class SettingsFragment extends Fragment {
         addToFavoriteLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("Settings Fragment", WeatherInfoManager.getWeatherInfoData().location.locationName);
                 WeatherInfoManager.addLocationToFavorite(WeatherInfoManager.getWeatherInfoData().location);
             }
         });
 
-        ArrayList<FavoriteLocationFragment> favoriteLocationFragmentArrayList = new ArrayList<>();
+//        ArrayList<FavoriteLocationFragment> favoriteLocationFragmentArrayList = new ArrayList<>();
+
+//        ViewPager viewPager = view.findViewById(R.id.favoritePlacesViewPager);
+
+//        for (int i = 0; i < favoriteLocationsArray.size(); i++) {
+//            Location favoriteLocation = favoriteLocationsArray.get(i);
+//            favoriteLocationFragmentArrayList.add(FavoriteLocationFragment.newInstance(favoriteLocation));
+//        }
+
         ArrayList<Location> favoriteLocationsArray = WeatherInfoManager.getFavoriteLocationsArray();
-        ViewPager viewPager = view.findViewById(R.id.favoritePlacesViewPager);
 
-        for (int i = 0; i < favoriteLocationsArray.size(); i++) {
-            Location favoriteLocation = favoriteLocationsArray.get(i);
-            favoriteLocationFragmentArrayList.add(FavoriteLocationFragment.newInstance(favoriteLocation));
-        }
+        //        //start debug
+        GeographicalCoordinates geo = new GeographicalCoordinates(3,43);
+        Location location = new Location(geo, "testLocation2");
+        WeatherInfoManager.addLocationToFavorite(location);
 
-        FavoriteLocationsAdapter favoriteLocationsAdapter = new FavoriteLocationsAdapter(getActivity().getSupportFragmentManager(), favoriteLocationFragmentArrayList);
+        Log.i("Settings Fragment", String.valueOf(favoriteLocationsArray.size()));
+//        //end debug
 
-        viewPager.setAdapter(favoriteLocationsAdapter);
+        RecyclerView favoriteLocationsRecyclerView = view.findViewById(R.id.favoriteLocationsRecyclerView);
+        favoriteLocationsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        FavoriteLocationsAdapter favoriteLocationsAdapter =  new FavoriteLocationsAdapter(favoriteLocationsArray);
+        favoriteLocationsRecyclerView.setAdapter(favoriteLocationsAdapter);
+
+
+        Location location2 = new Location(geo, "testLocation3");
+        WeatherInfoManager.addLocationToFavorite(location2);
+        favoriteLocationsAdapter.notifyDataSetChanged();
+
     }
 }

@@ -19,7 +19,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <EditText
@@ -33,12 +33,37 @@
                 android:layout_height="wrap_content"
                 android:text="Set location" />
 
+            <Button
+                android:id="@+id/addToFavoriteLocationButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add to favorite location" />
+
         </LinearLayout>
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/favoritePlacesViewPager"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Settings" />
+
+<!--            <androidx.viewpager.widget.ViewPager-->
+<!--                android:id="@+id/favoritePlacesViewPager"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content" />-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/favoriteLocationsRecyclerView"
+                android:layout_width="214dp"
+                android:layout_height="304dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+
 
     </LinearLayout>
 

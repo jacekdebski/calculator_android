@@ -48,6 +48,15 @@ public class WeatherInfoManager {
         mFavoriteLocationsArray.add(location);
     }
 
+    public static void removeLocationFromFavorite(String locationName) {
+        for (Location location : mFavoriteLocationsArray) {
+            if (location.locationName.equals(locationName)) {
+                mFavoriteLocationsArray.remove(location);
+                break;
+            }
+        }
+    }
+
     public static void setWeatherInfoLoadListener(WeatherInfoLoadListener listener) {
         mWeatherInfoLoadListener = listener;
     }
