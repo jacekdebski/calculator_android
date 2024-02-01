@@ -15,6 +15,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
 public class WeatherInfoAPIController {
     private static Context context;
     private String baseURL = "https://api.openweathermap.org";
@@ -38,9 +42,7 @@ public class WeatherInfoAPIController {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.i("Main Activity", "Response is:" + response);
-//                        textView.setText("Response: " + response.toString());
-
+                        Log.i("WeatherInfoApiController", "Response is:" + response);
                         try {
 
                             JSONArray weatherArray = response.getJSONArray("weather");
@@ -51,11 +53,13 @@ public class WeatherInfoAPIController {
                             String weatherIcon = weatherObject.getString("icon");
                             String locationName = response.getString("name");
 
+                            long dt = response.getLong("dt");
+                            ZonedDateTime timeOfDataCalculation = Instant.ofEpochSecond(dt).atZone(ZoneId.of("UTC"));
+                            Log.i("WeatherInfoApiController", "timeOfDataCalculation is:" + timeOfDataCalculation);
 
                             if (weatherInfoFetchDataListener != null) {
-                                Log.i("Main Activity", "weatherInfoFetchDataListener in onResponse");
                                 Location location = new Location(geographicalCoordinates, locationName);
-                                weatherInfoFetchDataListener.onFetchWeatherInfo(new WeatherInfoData(location, weatherMain, weatherDescription, weatherIcon));
+                                weatherInfoFetchDataListener.onFetchWeatherInfo(new WeatherInfoData(location, weatherMain, weatherDescription, weatherIcon, timeOfDataCalculation));
                             } else {
                                 Log.i("Main Activity", "weatherInfoFetchDataListener is null");
                             }
@@ -81,9 +85,7 @@ public class WeatherInfoAPIController {
 //
 //                            JSONObject clouds = response.getJSONObject("clouds");
 //                            int cloudiness = clouds.getInt("all");
-//
-//                            long dt = response.getLong("dt");
-//
+////
 //                            JSONObject sys = response.getJSONObject("sys");
 //                            int sysType = sys.getInt("type");
 //                            int sysId = sys.getInt("id");

@@ -7,6 +7,9 @@ import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.util.Log;
 
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 
 public class WeatherInfoManager {
@@ -108,7 +111,7 @@ public class WeatherInfoManager {
         editor.putFloat("longitude", weatherInfoData.location.geographicalCoordinates.longitude);
         editor.putString("weatherMain", weatherInfoData.weatherMain);
         editor.putString("weatherDescription", weatherInfoData.weatherDescription);
-        editor.putString("weatherDescription", weatherInfoData.weatherDescription);
+        editor.putLong("timeOfDataCalculation", weatherInfoData.timeOfDataCalculation.toInstant().getEpochSecond());
 //        editor.apply(); //it is asynchronous
         editor.commit();
     }
@@ -123,7 +126,9 @@ public class WeatherInfoManager {
         String weatherMain = sharedPreferences.getString("weatherMain", "no data");
         String weatherDescription = sharedPreferences.getString("weatherDescription", "no data");
         String weatherIcon = sharedPreferences.getString("weatherIcon", "no data");
+        Long unixTimestamp = sharedPreferences.getLong("timeOfDataCalculation", 0);
+        ZonedDateTime timeOfDataCalculation = Instant.ofEpochMilli(unixTimestamp).atZone(ZoneId.of("UTC"));
         Log.i("WeatherInfoManager", weatherMain + " " + weatherDescription + " " + weatherIcon);
-        return new WeatherInfoData(location, weatherMain, weatherDescription, weatherIcon);
+        return new WeatherInfoData(location, weatherMain, weatherDescription, weatherIcon, timeOfDataCalculation);
     }
 }
