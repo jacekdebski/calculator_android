@@ -1,10 +1,12 @@
 package com.calculator;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,6 +38,17 @@ public class FavoriteLocationsAdapter extends ArrayAdapter<Location> {
             viewHolder.textView = convertView.findViewById(R.id.favoriteLocationNameTextView);
 
             convertView.setTag(viewHolder);
+
+            Button removeLocationFromFavoriteButton = convertView.findViewById(R.id.removeLocationFromFavoriteButton);
+            removeLocationFromFavoriteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("FavoriteLocationsAdapter", "removeLocationFromFavoriteButton clicked");
+                    WeatherInfoManager.removeLocationFromFavorite(mFavoriteLocationsArray.get(position).locationName);
+                    notifyDataSetChanged();
+                }
+            });
+
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
