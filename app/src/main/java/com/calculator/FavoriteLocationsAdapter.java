@@ -1,8 +1,10 @@
 package com.calculator;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,42 +13,40 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class FavoriteLocationsAdapter extends RecyclerView.Adapter<FavoriteLocationsAdapter.FavoriteLocationsViewHolder> {
+public class FavoriteLocationsAdapter extends ArrayAdapter<Location> {
     private ArrayList<Location> mFavoriteLocationsArray;
+    private Context context;
 
-
-    public FavoriteLocationsAdapter(ArrayList<Location> favoriteLocationsArray) {
-        mFavoriteLocationsArray = favoriteLocationsArray;
+    public FavoriteLocationsAdapter(@NonNull Context context, ArrayList<Location> mFavoriteLocationsArray) {
+        super(context, R.layout.favorite_location, mFavoriteLocationsArray);
+        this.mFavoriteLocationsArray = mFavoriteLocationsArray;
+        this.context = context;
     }
 
     @NonNull
     @Override
-    public FavoriteLocationsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.favorite_location, parent, false);
-        return new FavoriteLocationsViewHolder(view);
-    }
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        ViewHolder viewHolder;
 
-    @Override
-    public void onBindViewHolder(@NonNull FavoriteLocationsAdapter.FavoriteLocationsViewHolder holder, int position) {
-        Location location = mFavoriteLocationsArray.get(position);
-        holder.bind(location);
-    }
+        if (convertView == null) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            convertView = inflater.inflate(R.layout.favorite_location, parent, false);
 
-    @Override
-    public int getItemCount() {
-        return mFavoriteLocationsArray.size();
-    }
+            viewHolder = new ViewHolder();
+            viewHolder.textView = convertView.findViewById(R.id.favoriteLocationNameTextView);
 
-    public class FavoriteLocationsViewHolder extends RecyclerView.ViewHolder {
-        private TextView favoriteLocationTextView;
-
-        public FavoriteLocationsViewHolder(View itemView) {
-            super(itemView);
-            favoriteLocationTextView = itemView.findViewById(R.id.favoriteLocationNameTextView);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        public void bind(Location location) {
-            favoriteLocationTextView.setText(location.locationName);
-        }
+        String locationNameString = mFavoriteLocationsArray.get(position).locationName;
+        viewHolder.textView.setText(locationNameString);
+
+        return convertView;
+    }
+
+    private static class ViewHolder {
+        TextView textView;
     }
 }

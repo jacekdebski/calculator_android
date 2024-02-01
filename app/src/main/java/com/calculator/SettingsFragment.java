@@ -21,6 +21,8 @@ import java.util.ArrayList;
 
 public class SettingsFragment extends Fragment {
 
+    FavoriteLocationsAdapter favoriteLocationsAdapter;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -74,6 +76,7 @@ public class SettingsFragment extends Fragment {
             public void onClick(View v) {
                 Log.i("Settings Fragment", WeatherInfoManager.getWeatherInfoData().location.locationName);
                 WeatherInfoManager.addLocationToFavorite(WeatherInfoManager.getWeatherInfoData().location);
+                favoriteLocationsAdapter.notifyDataSetChanged();
             }
         });
 
@@ -93,19 +96,14 @@ public class SettingsFragment extends Fragment {
         Location location = new Location(geo, "testLocation2");
         WeatherInfoManager.addLocationToFavorite(location);
 
+        Location location2 = new Location(geo, "testLocation3");
+        WeatherInfoManager.addLocationToFavorite(location2);
+
         Log.i("Settings Fragment", String.valueOf(favoriteLocationsArray.size()));
 //        //end debug
 
-        RecyclerView favoriteLocationsRecyclerView = view.findViewById(R.id.favoriteLocationsRecyclerView);
-        favoriteLocationsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        FavoriteLocationsAdapter favoriteLocationsAdapter =  new FavoriteLocationsAdapter(favoriteLocationsArray);
-        favoriteLocationsRecyclerView.setAdapter(favoriteLocationsAdapter);
-
-
-        Location location2 = new Location(geo, "testLocation3");
-        WeatherInfoManager.addLocationToFavorite(location2);
-        favoriteLocationsAdapter.notifyDataSetChanged();
-
+        favoriteLocationsAdapter =  new FavoriteLocationsAdapter(getContext().getApplicationContext(), favoriteLocationsArray);
+        ListView listView = view.findViewById(R.id.favoriteLocationsListView);
+        listView.setAdapter(favoriteLocationsAdapter);
     }
 }
