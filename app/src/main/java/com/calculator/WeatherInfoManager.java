@@ -6,6 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -32,6 +33,7 @@ public class WeatherInfoManager {
             public void onFetchWeatherInfo(WeatherInfoData weatherInfoData) {
                 setWeatherInfoData(weatherInfoData);
                 saveWeatherInfoDataToSharedPreferences(weatherInfoData);
+                Toast.makeText(mContext, "weather data updated", Toast.LENGTH_SHORT).show();
                 mWeatherInfoLoadListener.onLoadWeatherInfo();
             }
         });
@@ -83,12 +85,13 @@ public class WeatherInfoManager {
 
     public static void refreshWeatherInfoData() {
         ZonedDateTime currentDateTime = ZonedDateTime.now(ZoneId.of("UTC"));
+        Log.i("WeatherInfoManager", "currentDateTime: " + currentDateTime);
         Duration duration = Duration.between(currentDateTime, mWeatherInfoData.timeOfDataCalculation);
         if (duration.abs().compareTo(Duration.ofHours(1)) < 0) {
             Log.i("WeatherInfoManager", "refresh weather data");
             tryToFetchWeatherInfoData(mWeatherInfoData.location.locationName);
         } else {
-            Log.i("WeatherInfoManager", "no need to update weather data");
+            Log.i("WeatherInfoManager", "no need to update weather data " + mWeatherInfoData.timeOfDataCalculation);
         }
     }
 
