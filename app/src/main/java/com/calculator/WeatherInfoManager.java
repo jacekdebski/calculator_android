@@ -59,7 +59,12 @@ public class WeatherInfoManager {
     }
 
     public static void addLocationToFavorite(Location location) {
-        mFavoriteLocationsArray.add(location);
+
+        if (!mFavoriteLocationsArray.contains(location)) {
+            mFavoriteLocationsArray.add(location);
+        } else {
+            Toast.makeText(mContext, location.locationName + " is already in the favorites.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public static void removeLocationFromFavorite(String locationName) {
