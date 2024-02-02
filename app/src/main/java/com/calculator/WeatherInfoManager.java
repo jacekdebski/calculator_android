@@ -81,7 +81,7 @@ public class WeatherInfoManager {
         mWeatherInfoLoadListener = listener;
     }
 
-    public static void tryToFetchWeatherInfoData(String location) {
+    private static void tryToFetchWeatherInfoData(String location) {
         if (checkInternetConnection()) {
             mWeatherInfoAPIController.fetchGeographicalCoordinates(location);
         } else {
@@ -100,6 +100,17 @@ public class WeatherInfoManager {
         } else {
             Log.i("WeatherInfoManager", "no need to update weather data: time of data calculation: " + mWeatherInfoData.timeOfDataCalculation);
             Toast.makeText(mContext, "weather data is up to date, no need to update", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public static void setLocation(String locationName) {
+        Log.i("WeatherInfoManager", locationName + " " + mWeatherInfoData.location.locationName);
+        if (locationName.equals(mWeatherInfoData.location.locationName)) {
+            Toast.makeText(mContext, locationName + " is already set", Toast.LENGTH_SHORT).show();
+        } else if (locationName.equals("")) {
+            Toast.makeText(mContext, "The location name may not be empty", Toast.LENGTH_SHORT).show();
+        } else {
+            tryToFetchWeatherInfoData(locationName);
         }
     }
 

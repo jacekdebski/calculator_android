@@ -66,7 +66,7 @@ public class SettingsFragment extends Fragment {
             public void onClick(View v) {
                 EditText locationEditText = (EditText) view.findViewById(R.id.locationEditText);
                 String location = locationEditText.getText().toString();
-                WeatherInfoManager.tryToFetchWeatherInfoData(location);
+                WeatherInfoManager.setLocation(location);
             }
         });
 
