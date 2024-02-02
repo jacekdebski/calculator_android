@@ -57,11 +57,22 @@ public class WeatherInfoAPIController {
                             ZonedDateTime timeOfDataCalculation = Instant.ofEpochSecond(dt).atZone(ZoneId.of("UTC"));
                             Log.i("WeatherInfoApiController", "timeOfDataCalculation is:" + timeOfDataCalculation);
 
+                            JSONObject mainObject = response.getJSONObject("main");
+                            float temperature = (float) mainObject.getDouble("temp");
+//                            double feelsLike = main.getDouble("feels_like");
+//                            double tempMin = main.getDouble("temp_min");
+//                            double tempMax = main.getDouble("temp_max");
+                            int pressure = mainObject.getInt("pressure");
+//                            int humidity = mainObject.getInt("humidity");
+//                            int seaLevel = mainObject.getInt("sea_level");
+//                            int groundLevel = mainObject.getInt("grnd_level");
+
+
                             if (weatherInfoFetchDataListener != null) {
                                 Location location = new Location(geographicalCoordinates, locationName);
-                                weatherInfoFetchDataListener.onFetchWeatherInfo(new WeatherInfoData(location, weatherMain, weatherDescription, weatherIcon, timeOfDataCalculation));
+                                weatherInfoFetchDataListener.onFetchWeatherInfo(new WeatherInfoData(location, weatherMain, weatherDescription, weatherIcon, timeOfDataCalculation, temperature, pressure));
                             } else {
-                                Log.i("Main Activity", "weatherInfoFetchDataListener is null");
+                                Log.i("WeatherInfoAPIController", "weatherInfoFetchDataListener is null");
                             }
 
 //                            String base = response.getString("base");

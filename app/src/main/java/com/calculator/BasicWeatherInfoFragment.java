@@ -75,5 +75,11 @@ public class BasicWeatherInfoFragment extends Fragment implements WeatherInfoFra
 
         TextView weatherMainTextView = view.findViewById(R.id.weatherDescriptionTextView);
         weatherMainTextView.setText(weatherInfoData.weatherMain);
+
+        TextView temperatureTextView = view.findViewById(R.id.temperatureTextView);
+        temperatureTextView.setText(String.valueOf((weatherInfoData.temperature)));
+
+        TextView pressureTextView = view.findViewById(R.id.pressureTextView);
+        pressureTextView.setText(String.valueOf(weatherInfoData.pressure));
     }
 }
