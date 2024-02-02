@@ -97,7 +97,7 @@ public class WeatherInfoManager {
             Log.i("WeatherInfoManager", "refresh weather data");
             tryToFetchWeatherInfoData(mWeatherInfoData.location.locationName);
         } else {
-            Log.i("WeatherInfoManager", "no need to update weather data " + mWeatherInfoData.timeOfDataCalculation);
+            Log.i("WeatherInfoManager", "no need to update weather data: time of data calculation: " + mWeatherInfoData.timeOfDataCalculation);
         }
     }
 
@@ -147,7 +147,8 @@ public class WeatherInfoManager {
         String weatherDescription = sharedPreferences.getString("weatherDescription", "no data");
         String weatherIcon = sharedPreferences.getString("weatherIcon", "no data");
         Long unixTimestamp = sharedPreferences.getLong("timeOfDataCalculation", 0);
-        ZonedDateTime timeOfDataCalculation = Instant.ofEpochMilli(unixTimestamp).atZone(ZoneId.of("UTC"));
+        ZonedDateTime timeOfDataCalculation = Instant.ofEpochSecond(unixTimestamp).atZone(ZoneId.of("UTC"));
+        Log.i("WeatherInfoManager", "loaded time of data calculation: " + timeOfDataCalculation);
         float temperature = sharedPreferences.getFloat("temperature", 0);
         int pressure = sharedPreferences.getInt("pressure", 0);
         float windSpeed = sharedPreferences.getFloat("windSpeed", 0);
