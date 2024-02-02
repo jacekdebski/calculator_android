@@ -60,8 +60,6 @@ public class BasicWeatherInfoFragment extends Fragment implements WeatherInfoFra
         Log.i("BasicWeatherInfoFragment", "setWeatherInfoData");
 
         View view = getView();
-        TextView weatherMainTextView = view.findViewById(R.id.weatherDescriptionTextView);
-        weatherMainTextView.setText(weatherInfoData.weatherMain);
 
         TextView locationNameTextView = view.findViewById(R.id.locationNameTextView);
         locationNameTextView.setText(weatherInfoData.location.locationName);
@@ -72,8 +70,10 @@ public class BasicWeatherInfoFragment extends Fragment implements WeatherInfoFra
         TextView longitudeTextView = view.findViewById(R.id.longitudeTextView);
         longitudeTextView.setText(String.valueOf(weatherInfoData.location.geographicalCoordinates.longitude));
 
-        TextView timeOfDataCalcuation = view.findViewById(R.id.timeOfDataCalculationTextView);
-        timeOfDataCalcuation.setText(String.valueOf(weatherInfoData.timeOfDataCalculation));
+        TextView timeOfDataCalculation = view.findViewById(R.id.timeOfDataCalculationTextView);
+        timeOfDataCalculation.setText(String.valueOf(weatherInfoData.timeOfDataCalculation));
 
+        TextView weatherMainTextView = view.findViewById(R.id.weatherDescriptionTextView);
+        weatherMainTextView.setText(weatherInfoData.weatherMain);
     }
 }
