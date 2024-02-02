@@ -31,7 +31,7 @@ public class WeatherInfoManager {
 
             @Override
             public void onFetchWeatherInfo(WeatherInfoData weatherInfoData) {
-                setWeatherInfoData(weatherInfoData);
+                mWeatherInfoData = weatherInfoData;
                 saveWeatherInfoDataToSharedPreferences(weatherInfoData);
                 Toast.makeText(mContext, "weather data updated", Toast.LENGTH_SHORT).show();
                 mWeatherInfoLoadListener.onLoadWeatherInfo();
@@ -39,6 +39,12 @@ public class WeatherInfoManager {
         });
 
         mWeatherInfoData = loadWeatherInfoDataFromSharedPreferences();
+
+        if (mWeatherInfoData.location.locationName.equals("no data")) {
+            Log.i("WeatherInfoManager", "locationName: " + mWeatherInfoData.location.locationName);
+            mWeatherInfoData.location.locationName = "Warsaw";
+        }
+        refreshWeatherInfoData();
         mFavoriteLocationsArray = new ArrayList<Location>(); // TODO: load from file or create empty
     }
 
@@ -93,10 +99,6 @@ public class WeatherInfoManager {
         } else {
             Log.i("WeatherInfoManager", "no need to update weather data " + mWeatherInfoData.timeOfDataCalculation);
         }
-    }
-
-    private static void setWeatherInfoData(WeatherInfoData weatherInfoData) {
-        mWeatherInfoData = weatherInfoData;
     }
 
     private static boolean checkInternetConnection() {
