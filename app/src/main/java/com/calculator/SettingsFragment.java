@@ -5,9 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,9 +20,6 @@ public class SettingsFragment extends Fragment {
 
     FavoriteLocationsAdapter favoriteLocationsAdapter;
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
     private String mParam1;
     private String mParam2;
 
@@ -34,20 +28,12 @@ public class SettingsFragment extends Fragment {
 
     public static SettingsFragment newInstance(String param1, String param2) {
         SettingsFragment fragment = new SettingsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -88,27 +74,7 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-//        ArrayList<FavoriteLocationFragment> favoriteLocationFragmentArrayList = new ArrayList<>();
-
-//        ViewPager viewPager = view.findViewById(R.id.favoritePlacesViewPager);
-
-//        for (int i = 0; i < favoriteLocationsArray.size(); i++) {
-//            Location favoriteLocation = favoriteLocationsArray.get(i);
-//            favoriteLocationFragmentArrayList.add(FavoriteLocationFragment.newInstance(favoriteLocation));
-//        }
-
         ArrayList<Location> favoriteLocationsArray = WeatherInfoManager.getFavoriteLocationsArray();
-
-        //        //start debug
-        GeographicalCoordinates geo = new GeographicalCoordinates(3, 43);
-        Location location = new Location(geo, "testLocation2");
-        WeatherInfoManager.addLocationToFavorite(location);
-
-        Location location2 = new Location(geo, "testLocation3");
-        WeatherInfoManager.addLocationToFavorite(location2);
-
-        Log.i("Settings Fragment", String.valueOf(favoriteLocationsArray.size()));
-//        //end debug
 
         favoriteLocationsAdapter = new FavoriteLocationsAdapter(getContext().getApplicationContext(), favoriteLocationsArray);
         ListView listView = view.findViewById(R.id.favoriteLocationsListView);
