@@ -113,6 +113,9 @@ public class WeatherInfoManager {
         editor.putLong("timeOfDataCalculation", weatherInfoData.timeOfDataCalculation.toInstant().getEpochSecond());
         editor.putFloat("temperature", weatherInfoData.temperature);
         editor.putInt("pressure", weatherInfoData.pressure);
+        editor.putFloat("windSpeed", weatherInfoData.windSpeed);
+        editor.putFloat("windDirection", weatherInfoData.windDirection);
+        editor.putInt("humidity", weatherInfoData.humidity);
 //        editor.apply(); //it is asynchronous
         editor.commit();
     }
@@ -130,6 +133,9 @@ public class WeatherInfoManager {
         ZonedDateTime timeOfDataCalculation = Instant.ofEpochMilli(unixTimestamp).atZone(ZoneId.of("UTC"));
         float temperature = sharedPreferences.getFloat("temperature", 0);
         int pressure = sharedPreferences.getInt("pressure", 0);
-        return new WeatherInfoData(location, weatherDescription, weatherIcon, timeOfDataCalculation, temperature, pressure);
+        float windSpeed = sharedPreferences.getFloat("windSpeed", 0);
+        float windDirection = sharedPreferences.getFloat("windDirection", 0);
+        int humidity = sharedPreferences.getInt("humidity", 0);
+        return new WeatherInfoData(location, weatherDescription, weatherIcon, timeOfDataCalculation, temperature, pressure, windSpeed, windDirection, humidity);
     }
 }

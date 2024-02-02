@@ -62,14 +62,17 @@ public class WeatherInfoAPIController {
 //                            double tempMin = main.getDouble("temp_min");
 //                            double tempMax = main.getDouble("temp_max");
                             int pressure = mainObject.getInt("pressure");
-//                            int humidity = mainObject.getInt("humidity");
+                            int humidity = mainObject.getInt("humidity");
 //                            int seaLevel = mainObject.getInt("sea_level");
 //                            int groundLevel = mainObject.getInt("grnd_level");
 
+                            JSONObject windObject = response.getJSONObject("wind");
+                            float windSpeed = (float) windObject.getDouble("speed");
+                            float windDirection = (float) windObject.getDouble("deg");
 
                             if (weatherInfoFetchDataListener != null) {
                                 Location location = new Location(geographicalCoordinates, locationName);
-                                weatherInfoFetchDataListener.onFetchWeatherInfo(new WeatherInfoData(location, weatherDescription, weatherIcon, timeOfDataCalculation, temperature, pressure));
+                                weatherInfoFetchDataListener.onFetchWeatherInfo(new WeatherInfoData(location, weatherDescription, weatherIcon, timeOfDataCalculation, temperature, pressure, windSpeed, windDirection, humidity));
                             } else {
                                 Log.i("WeatherInfoAPIController", "weatherInfoFetchDataListener is null");
                             }

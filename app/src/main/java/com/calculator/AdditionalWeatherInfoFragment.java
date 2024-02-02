@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class AdditionalWeatherInfoFragment extends Fragment implements WeatherInfoFragment {
 
     private static final String ARG_PARAM1 = "param1";
@@ -53,5 +55,19 @@ public class AdditionalWeatherInfoFragment extends Fragment implements WeatherIn
     @Override
     public void setWeatherInfoData(WeatherInfoData weatherInfoData) {
         Log.i("AdditionalWeatherInfoFragment", "setWeatherInfoData");
+
+        View view = getView();
+
+        TextView locationNameTextView = view.findViewById(R.id.locationNameTextView);
+        locationNameTextView.setText(weatherInfoData.location.locationName);
+
+        TextView windSpeedTextView = view.findViewById(R.id.windSpeedTextView);
+        windSpeedTextView.setText(String.valueOf(weatherInfoData.windSpeed));
+
+        TextView windDirectionTextView = view.findViewById(R.id.windDirectionTextView);
+        windDirectionTextView.setText(String.valueOf(weatherInfoData.windDirection));
+
+        TextView humidityTextView = view.findViewById(R.id.humidityTextView);
+        humidityTextView.setText(String.valueOf(weatherInfoData.humidity));
     }
 }
