@@ -7,6 +7,7 @@ import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.util.Log;
 
+import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -80,11 +81,22 @@ public class WeatherInfoManager {
 //        }
     }
 
+    public static void refreshWeatherInfoData() {
+        ZonedDateTime currentDateTime = ZonedDateTime.now(ZoneId.of("UTC"));
+        Duration duration = Duration.between(currentDateTime, mWeatherInfoData.timeOfDataCalculation);
+        if (duration.abs().compareTo(Duration.ofHours(1)) < 0) {
+            Log.i("WeatherInfoManager", "refresh weather data");
+            tryToFetchWeatherInfoData(mWeatherInfoData.location.locationName);
+        } else {
+            Log.i("WeatherInfoManager", "no need to update weather data");
+        }
+    }
+
     private static void setWeatherInfoData(WeatherInfoData weatherInfoData) {
         mWeatherInfoData = weatherInfoData;
     }
 
-    private boolean checkInternetConnection() {
+    private static boolean checkInternetConnection() {
         ConnectivityManager connectivityManager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
         boolean isInternetConnection = false;
 

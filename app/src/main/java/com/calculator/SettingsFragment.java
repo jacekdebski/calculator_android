@@ -80,6 +80,14 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        Button refreshDataButton = view.findViewById(R.id.refreshDataButton);
+        refreshDataButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WeatherInfoManager.refreshWeatherInfoData();
+            }
+        });
+
 //        ArrayList<FavoriteLocationFragment> favoriteLocationFragmentArrayList = new ArrayList<>();
 
 //        ViewPager viewPager = view.findViewById(R.id.favoritePlacesViewPager);
@@ -92,7 +100,7 @@ public class SettingsFragment extends Fragment {
         ArrayList<Location> favoriteLocationsArray = WeatherInfoManager.getFavoriteLocationsArray();
 
         //        //start debug
-        GeographicalCoordinates geo = new GeographicalCoordinates(3,43);
+        GeographicalCoordinates geo = new GeographicalCoordinates(3, 43);
         Location location = new Location(geo, "testLocation2");
         WeatherInfoManager.addLocationToFavorite(location);
 
@@ -102,7 +110,7 @@ public class SettingsFragment extends Fragment {
         Log.i("Settings Fragment", String.valueOf(favoriteLocationsArray.size()));
 //        //end debug
 
-        favoriteLocationsAdapter =  new FavoriteLocationsAdapter(getContext().getApplicationContext(), favoriteLocationsArray);
+        favoriteLocationsAdapter = new FavoriteLocationsAdapter(getContext().getApplicationContext(), favoriteLocationsArray);
         ListView listView = view.findViewById(R.id.favoriteLocationsListView);
         listView.setAdapter(favoriteLocationsAdapter);
     }
