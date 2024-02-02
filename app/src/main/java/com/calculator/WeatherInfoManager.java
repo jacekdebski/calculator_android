@@ -76,19 +76,12 @@ public class WeatherInfoManager {
     }
 
     public static void tryToFetchWeatherInfoData(String location) {
-        mWeatherInfoAPIController.fetchGeographicalCoordinates(location);
-//        if (checkInternetConnection()) {
-//            this.weatherInfoAPIController.fetchWeatherInfo();
-////        this.weatherInfoAPIController.fetchGeographicalCoordinates();
-//        } else {
-//            WeatherInfoData weatherInfoData = loadWeatherInfoDataFromSharedPreferences();
-////            Log.i("WeatherInfoManager", "in getWeatherInfo after loadWeatherInfoData" + this.weatherInfoData.weatherMain);
-//            Log.i("WeatherInfoManager", "in getWeatherInfo after loadWeatherInfoData");
-//            setWeatherInfoData(weatherInfoData);
-//            Log.i("WeatherInfoManager", "in getWeatherInfo after setWeatherInfoData" + this.weatherInfoData.weatherMain);
-//            weatherInfoLoadListener.onLoadWeatherInfo();
-//            Log.i("WeatherInfoManager", "no internet connection");
-//        }
+        if (checkInternetConnection()) {
+            mWeatherInfoAPIController.fetchGeographicalCoordinates(location);
+        } else {
+            Log.i("WeatherInfoManager", "unable to fetch weather data due to lack of internet connection");
+            Toast.makeText(mContext, "unable to fetch weather data due to lack of internet connection", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public static void refreshWeatherInfoData() {
