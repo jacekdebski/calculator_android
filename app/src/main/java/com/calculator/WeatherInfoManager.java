@@ -63,7 +63,7 @@ public class WeatherInfoManager {
         if (!mFavoriteLocationsArray.contains(location)) {
             mFavoriteLocationsArray.add(location);
         } else {
-            Toast.makeText(mContext, location.locationName + " is already in the favorites.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, location.locationName + " is already in the favorites", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -71,6 +71,7 @@ public class WeatherInfoManager {
         for (Location location : mFavoriteLocationsArray) {
             if (location.locationName.equals(locationName)) {
                 mFavoriteLocationsArray.remove(location);
+                Toast.makeText(mContext, location.locationName + " has been removed from the favorites", Toast.LENGTH_SHORT).show();
                 break;
             }
         }
