@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 public class BasicWeatherInfoFragment extends Fragment implements WeatherInfoFragment {
 
-    private static final String WEATHER_MAIN = "";
     private static final String WEATHER_DESCRIPTION = "";
     private static final String WEATHER_ICON = "";
 
@@ -26,7 +25,6 @@ public class BasicWeatherInfoFragment extends Fragment implements WeatherInfoFra
     public static BasicWeatherInfoFragment newInstance(WeatherInfoData weatherInfoData) {
         BasicWeatherInfoFragment fragment = new BasicWeatherInfoFragment();
         Bundle args = new Bundle();
-        args.putString(WEATHER_MAIN, weatherInfoData.weatherMain);
         args.putString(WEATHER_DESCRIPTION, weatherInfoData.weatherDescription);
         args.putString(WEATHER_ICON, weatherInfoData.weatherIcon);
         fragment.setArguments(args);
@@ -37,7 +35,6 @@ public class BasicWeatherInfoFragment extends Fragment implements WeatherInfoFra
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mWeatherMain = getArguments().getString(WEATHER_MAIN);
             mWeatherDescription = getArguments().getString(WEATHER_DESCRIPTION);
             mWeatherIcon = getArguments().getString(WEATHER_ICON);
         }
@@ -74,7 +71,7 @@ public class BasicWeatherInfoFragment extends Fragment implements WeatherInfoFra
         timeOfDataCalculation.setText(String.valueOf(weatherInfoData.timeOfDataCalculation));
 
         TextView weatherMainTextView = view.findViewById(R.id.weatherDescriptionTextView);
-        weatherMainTextView.setText(weatherInfoData.weatherMain);
+        weatherMainTextView.setText(weatherInfoData.weatherDescription);
 
         TextView temperatureTextView = view.findViewById(R.id.temperatureTextView);
         temperatureTextView.setText(String.valueOf((weatherInfoData.temperature)));

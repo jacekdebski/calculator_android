@@ -48,7 +48,6 @@ public class WeatherInfoAPIController {
                             JSONArray weatherArray = response.getJSONArray("weather");
                             JSONObject weatherObject = weatherArray.getJSONObject(0);
                             int weatherId = weatherObject.getInt("id");
-                            String weatherMain = weatherObject.getString("main");
                             String weatherDescription = weatherObject.getString("description");
                             String weatherIcon = weatherObject.getString("icon");
                             String locationName = response.getString("name");
@@ -70,7 +69,7 @@ public class WeatherInfoAPIController {
 
                             if (weatherInfoFetchDataListener != null) {
                                 Location location = new Location(geographicalCoordinates, locationName);
-                                weatherInfoFetchDataListener.onFetchWeatherInfo(new WeatherInfoData(location, weatherMain, weatherDescription, weatherIcon, timeOfDataCalculation, temperature, pressure));
+                                weatherInfoFetchDataListener.onFetchWeatherInfo(new WeatherInfoData(location, weatherDescription, weatherIcon, timeOfDataCalculation, temperature, pressure));
                             } else {
                                 Log.i("WeatherInfoAPIController", "weatherInfoFetchDataListener is null");
                             }

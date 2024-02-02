@@ -109,7 +109,6 @@ public class WeatherInfoManager {
         editor.putString("locationName", weatherInfoData.location.locationName);
         editor.putFloat("latitude", weatherInfoData.location.geographicalCoordinates.latitude);
         editor.putFloat("longitude", weatherInfoData.location.geographicalCoordinates.longitude);
-        editor.putString("weatherMain", weatherInfoData.weatherMain);
         editor.putString("weatherDescription", weatherInfoData.weatherDescription);
         editor.putLong("timeOfDataCalculation", weatherInfoData.timeOfDataCalculation.toInstant().getEpochSecond());
         editor.putFloat("temperature", weatherInfoData.temperature);
@@ -125,14 +124,12 @@ public class WeatherInfoManager {
         Float longitude = sharedPreferences.getFloat("longitude", 0);
         GeographicalCoordinates geographicalCoordinates = new GeographicalCoordinates(latitude, longitude);
         Location location = new Location(geographicalCoordinates, locationName);
-        String weatherMain = sharedPreferences.getString("weatherMain", "no data");
         String weatherDescription = sharedPreferences.getString("weatherDescription", "no data");
         String weatherIcon = sharedPreferences.getString("weatherIcon", "no data");
         Long unixTimestamp = sharedPreferences.getLong("timeOfDataCalculation", 0);
         ZonedDateTime timeOfDataCalculation = Instant.ofEpochMilli(unixTimestamp).atZone(ZoneId.of("UTC"));
         float temperature = sharedPreferences.getFloat("temperature", 0);
         int pressure = sharedPreferences.getInt("pressure", 0);
-        Log.i("WeatherInfoManager", weatherMain + " " + weatherDescription + " " + weatherIcon);
-        return new WeatherInfoData(location, weatherMain, weatherDescription, weatherIcon, timeOfDataCalculation, temperature, pressure);
+        return new WeatherInfoData(location, weatherDescription, weatherIcon, timeOfDataCalculation, temperature, pressure);
     }
 }
