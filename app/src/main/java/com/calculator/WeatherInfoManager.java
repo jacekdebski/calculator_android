@@ -93,6 +93,7 @@ public class WeatherInfoManager {
             tryToFetchWeatherInfoData(mWeatherInfoData.location.locationName);
         } else {
             Log.i("WeatherInfoManager", "no need to update weather data: time of data calculation: " + mWeatherInfoData.timeOfDataCalculation);
+            Toast.makeText(mContext, "weather data is up to date, no need to update", Toast.LENGTH_SHORT).show();
         }
     }
 
