@@ -93,7 +93,7 @@ public class WeatherInfoManager {
         ZonedDateTime currentDateTime = ZonedDateTime.now(ZoneId.of("UTC"));
         Log.i("WeatherInfoManager", "currentDateTime: " + currentDateTime);
         Duration duration = Duration.between(currentDateTime, mWeatherInfoData.timeOfDataCalculation);
-        if (duration.abs().compareTo(Duration.ofHours(1)) < 0) {
+        if (duration.abs().compareTo(Duration.ofHours(1)) > 0) {
             Log.i("WeatherInfoManager", "refresh weather data");
             tryToFetchWeatherInfoData(mWeatherInfoData.location.locationName);
         } else {
