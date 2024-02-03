@@ -90,6 +90,15 @@ public class WeatherInfoManager {
         }
     }
 
+    private static void tryToFetchWeatherInfoData(GeographicalCoordinates geographicalCoordinates) {
+        if (checkInternetConnection()) {
+            mWeatherInfoAPIController.fetchWeatherInfo(geographicalCoordinates);
+        } else {
+            Log.i("WeatherInfoManager", "unable to fetch weather data due to lack of internet connection");
+            Toast.makeText(mContext, "unable to fetch weather data due to lack of internet connection", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public static void refreshWeatherInfoData() {
         ZonedDateTime currentDateTime = ZonedDateTime.now(ZoneId.of("UTC"));
         Log.i("WeatherInfoManager", "currentDateTime: " + currentDateTime);
@@ -111,6 +120,14 @@ public class WeatherInfoManager {
             Toast.makeText(mContext, "The location name may not be empty", Toast.LENGTH_SHORT).show();
         } else {
             tryToFetchWeatherInfoData(locationName);
+        }
+    }
+
+    public static void setLocation(GeographicalCoordinates geographicalCoordinates) {
+        if (geographicalCoordinates.equals(mWeatherInfoData.location.geographicalCoordinates)) {
+            Toast.makeText(mContext, "The location is already set", Toast.LENGTH_SHORT).show();
+        } else {
+            tryToFetchWeatherInfoData(geographicalCoordinates);
         }
     }
 
