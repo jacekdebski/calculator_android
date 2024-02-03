@@ -49,6 +49,16 @@ public class FavoriteLocationsAdapter extends ArrayAdapter<Location> {
                 }
             });
 
+            Button setLocationButton = convertView.findViewById(R.id.setLocationButton);
+            setLocationButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("FavoriteLocationsAdapter", "setLocationButton clicked");
+                    WeatherInfoManager.setLocation(mFavoriteLocationsArray.get(position).locationName);
+                    notifyDataSetChanged();
+                }
+            });
+
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }

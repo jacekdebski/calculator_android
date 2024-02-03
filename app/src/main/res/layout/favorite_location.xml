@@ -35,6 +35,14 @@
 
             </Button>
 
+            <Button
+                android:id="@+id/setLocationButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set">
+
+            </Button>
+
 
         </LinearLayout>
 
