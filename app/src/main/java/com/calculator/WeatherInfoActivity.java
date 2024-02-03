@@ -19,11 +19,7 @@ public class WeatherInfoActivity extends AppCompatActivity {
 
         WeatherInfoManager.init(getApplicationContext());
 
-        if (getResources().getConfiguration().orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE) {
-            setContentView(R.layout.activity_weather_info);
-        } else {
-            setContentView(R.layout.activity_weather_info);
-        }
+        setContentView(R.layout.activity_weather_info);
 
         if (savedInstanceState == null) {
             if (getResources().getConfiguration().orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE) {
