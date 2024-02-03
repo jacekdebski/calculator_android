@@ -1,45 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/weather_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/basicWeatherInfoButton"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/weather_fragment"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Basic Weather Info" />
+            android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/additionalWeatherInfoButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="Additional Weather Info" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center|bottom">
 
-        <Button
-            android:id="@+id/settingsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="Settings" />
+            <Button
+                android:id="@+id/basicWeatherInfoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Basic" />
 
+            <Button
+                android:id="@+id/additionalWeatherInfoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Additional" />
+
+            <Button
+                android:id="@+id/settingsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Settings" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
