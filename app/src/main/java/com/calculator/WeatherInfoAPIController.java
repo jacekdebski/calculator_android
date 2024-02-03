@@ -2,6 +2,7 @@ package com.calculator;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -71,6 +72,7 @@ public class WeatherInfoAPIController {
                                 Log.i("WeatherInfoAPIController", "weatherInfoFetchDataListener is null");
                             }
                         } catch (JSONException e) {
+                            Toast.makeText(context, "weather data info is not found for this city", Toast.LENGTH_SHORT).show();
                             e.printStackTrace();
                         }
                     }
@@ -79,6 +81,7 @@ public class WeatherInfoAPIController {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.i("WeatherInfoAPIController", "That didn't work!" + error);
+                        Toast.makeText(context, "failed to fetch weather info from the API", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -102,6 +105,7 @@ public class WeatherInfoAPIController {
                             GeographicalCoordinates geographicalCoordinates = new GeographicalCoordinates(latitude, longitude);
                             fetchWeatherInfo(geographicalCoordinates);
                         } catch (JSONException e) {
+                            Toast.makeText(context, "weather data info is not found for this city", Toast.LENGTH_SHORT).show();
                             e.printStackTrace();
                         }
                     }
@@ -110,6 +114,7 @@ public class WeatherInfoAPIController {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.i("WeatherAPIController", "That didn't work!" + error);
+                        Toast.makeText(context, "failed to fetch weather info from the API", Toast.LENGTH_SHORT).show();
                     }
                 });
 
