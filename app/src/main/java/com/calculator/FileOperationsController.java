@@ -4,9 +4,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 
 public class FileOperationsController {
     private Context mContext;
@@ -50,5 +55,33 @@ public class FileOperationsController {
         float windDirection = sharedPreferences.getFloat("windDirection", 0);
         int humidity = sharedPreferences.getInt("humidity", 0);
         return new WeatherInfoData(location, weatherDescription, weatherIcon, timeOfDataCalculation, temperature, pressure, windSpeed, windDirection, humidity);
+    }
+
+    public void saveFavoriteLocationsArrayToSharedPreferences() {
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences("WeatherDataFile", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        Gson gson = new Gson();
+        String favoriteLocationsJson = gson.toJson(WeatherInfoManager.getFavoriteLocationsArray());
+        editor.putString("favoriteLocations", favoriteLocationsJson);
+
+        editor.commit();
+    }
+
+    public ArrayList<Location> loadFavoriteLocationsArrayFromSharedPreferences() {
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences("WeatherDataFile", Context.MODE_PRIVATE);
+
+        Gson gson = new Gson();
+
+        String favoriteLocationsJson = sharedPreferences.getString("favoriteLocations", null);
+
+        Type type = new TypeToken<ArrayList<Location>>() {}.getType();
+        ArrayList<Location> favoriteLocationsArray = gson.fromJson(favoriteLocationsJson, type);
+
+        if (favoriteLocationsArray == null) {
+            favoriteLocationsArray = new ArrayList<Location>();
+        }
+
+        return favoriteLocationsArray;
     }
 }

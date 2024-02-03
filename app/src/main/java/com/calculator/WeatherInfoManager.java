@@ -47,7 +47,7 @@ public class WeatherInfoManager {
             mWeatherInfoData.location.locationName = "Warsaw";
         }
         refreshWeatherInfoData();
-        mFavoriteLocationsArray = new ArrayList<Location>(); // TODO: load from file or create empty
+        mFavoriteLocationsArray = mFileOperationsController.loadFavoriteLocationsArrayFromSharedPreferences();
     }
 
     public static WeatherInfoData getWeatherInfoData() {
@@ -62,6 +62,7 @@ public class WeatherInfoManager {
 
         if (!mFavoriteLocationsArray.contains(location)) {
             mFavoriteLocationsArray.add(location);
+            mFileOperationsController.saveFavoriteLocationsArrayToSharedPreferences();
         } else {
             Toast.makeText(mContext, location.locationName + " is already in the favorites", Toast.LENGTH_SHORT).show();
         }
@@ -72,6 +73,7 @@ public class WeatherInfoManager {
             if (location.locationName.equals(locationName)) {
                 mFavoriteLocationsArray.remove(location);
                 Toast.makeText(mContext, location.locationName + " has been removed from the favorites", Toast.LENGTH_SHORT).show();
+                mFileOperationsController.saveFavoriteLocationsArrayToSharedPreferences();
                 break;
             }
         }
