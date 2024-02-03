@@ -47,7 +47,6 @@ public class WeatherInfoAPIController {
 
                             JSONArray weatherArray = response.getJSONArray("weather");
                             JSONObject weatherObject = weatherArray.getJSONObject(0);
-                            int weatherId = weatherObject.getInt("id");
                             String weatherDescription = weatherObject.getString("description");
                             String weatherIcon = weatherObject.getString("icon");
                             String locationName = response.getString("name");
@@ -58,13 +57,8 @@ public class WeatherInfoAPIController {
 
                             JSONObject mainObject = response.getJSONObject("main");
                             float temperature = (float) mainObject.getDouble("temp");
-//                            double feelsLike = main.getDouble("feels_like");
-//                            double tempMin = main.getDouble("temp_min");
-//                            double tempMax = main.getDouble("temp_max");
                             int pressure = mainObject.getInt("pressure");
                             int humidity = mainObject.getInt("humidity");
-//                            int seaLevel = mainObject.getInt("sea_level");
-//                            int groundLevel = mainObject.getInt("grnd_level");
 
                             JSONObject windObject = response.getJSONObject("wind");
                             float windSpeed = (float) windObject.getDouble("speed");
@@ -76,40 +70,6 @@ public class WeatherInfoAPIController {
                             } else {
                                 Log.i("WeatherInfoAPIController", "weatherInfoFetchDataListener is null");
                             }
-
-//                            String base = response.getString("base");
-//
-//                            JSONObject main = response.getJSONObject("main");
-//                            double temp = main.getDouble("temp");
-//                            double feelsLike = main.getDouble("feels_like");
-//                            double tempMin = main.getDouble("temp_min");
-//                            double tempMax = main.getDouble("temp_max");
-//                            int pressure = main.getInt("pressure");
-//                            int humidity = main.getInt("humidity");
-//                            int seaLevel = main.getInt("sea_level");
-//                            int groundLevel = main.getInt("grnd_level");
-//
-//                            int visibility = response.getInt("visibility");
-//
-//                            JSONObject wind = response.getJSONObject("wind");
-//                            double windSpeed = wind.getDouble("speed");
-//                            double windDeg = wind.getDouble("deg");
-//                            double windGust = wind.getDouble("gust");
-//
-//                            JSONObject clouds = response.getJSONObject("clouds");
-//                            int cloudiness = clouds.getInt("all");
-////
-//                            JSONObject sys = response.getJSONObject("sys");
-//                            int sysType = sys.getInt("type");
-//                            int sysId = sys.getInt("id");
-//                            String sysCountry = sys.getString("country");
-//                            long sunrise = sys.getLong("sunrise");
-//                            long sunset = sys.getLong("sunset");
-//
-//                            int timezone = response.getInt("timezone");
-//
-//                            int cityId = response.getInt("id");
-//                            int cod = response.getInt("cod");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -118,7 +78,7 @@ public class WeatherInfoAPIController {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.i("Main Activity", "That didn't work!" + error);
+                        Log.i("WeatherInfoAPIController", "That didn't work!" + error);
                     }
                 });
 
