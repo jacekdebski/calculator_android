@@ -10,12 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Settings" />
+            android:layout_marginBottom="16dp"
+            android:text="Settings"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,47 +28,59 @@
 
             <EditText
                 android:id="@+id/locationEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Enter location" />
 
             <Button
                 android:id="@+id/setLocationButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:text="Set location" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/refreshDataButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Refresh data" />
 
             <Button
                 android:id="@+id/addToFavoriteLocationButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add to favorite location" />
-
+                android:gravity="center"
+                android:text="Add current city to favorites" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/refreshDataButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Refresh data" />
-
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Settings" />
+                android:layout_marginBottom="8dp"
+                android:text="Favorite Locations"
+                android:textStyle="bold" />
 
             <ListView
                 android:id="@+id/favoriteLocationsListView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></ListView>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
-
-
     </LinearLayout>
 
 </RelativeLayout>
