@@ -107,7 +107,7 @@ public class WeatherInfoManager {
         Duration duration = Duration.between(currentDateTime, mWeatherInfoData.timeOfDataCalculation);
         if (duration.abs().compareTo(Duration.ofHours(1)) > 0) {
             Log.i("WeatherInfoManager", "refresh weather data");
-            tryToFetchWeatherInfoData(mWeatherInfoData.location.locationName);
+            tryToFetchWeatherInfoData(mWeatherInfoData.location.geographicalCoordinates);
         } else {
             Log.i("WeatherInfoManager", "no need to update weather data: time of data calculation: " + mWeatherInfoData.timeOfDataCalculation);
             Toast.makeText(mContext, "weather data is up to date, no need to update", Toast.LENGTH_SHORT).show();
