@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.time.format.DateTimeFormatter;
+
 public class BasicWeatherInfoFragment extends Fragment implements WeatherInfoFragment {
 
     private static final String WEATHER_DESCRIPTION = "";
@@ -68,7 +70,11 @@ public class BasicWeatherInfoFragment extends Fragment implements WeatherInfoFra
         longitudeTextView.setText(String.valueOf(weatherInfoData.location.geographicalCoordinates.longitude));
 
         TextView timeOfDataCalculation = view.findViewById(R.id.timeOfDataCalculationTextView);
-        timeOfDataCalculation.setText(String.valueOf(weatherInfoData.timeOfDataCalculation));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
+        String formattedTimeOfDataCalculation = weatherInfoData.timeOfDataCalculation.format(formatter);
+
+        timeOfDataCalculation.setText(String.valueOf(formattedTimeOfDataCalculation));
 
         TextView weatherMainTextView = view.findViewById(R.id.weatherDescriptionTextView);
         weatherMainTextView.setText(weatherInfoData.weatherDescription);
