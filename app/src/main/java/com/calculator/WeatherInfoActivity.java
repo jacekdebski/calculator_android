@@ -110,11 +110,20 @@ public class WeatherInfoActivity extends AppCompatActivity {
         WeatherInfoData weatherInfoData = WeatherInfoManager.getWeatherInfoData();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment activeFragment = fragmentManager.findFragmentById(R.id.weather_fragment);
 
-        if (activeFragment != null) {
-            if (activeFragment instanceof WeatherInfoFragment) {
-                ((WeatherInfoFragment) activeFragment).setWeatherInfoData(weatherInfoData);
+        if (getResources().getConfiguration().orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE) {
+
+            Fragment weatherBasicFragment = fragmentManager.findFragmentById(R.id.weather_basic_fragment);
+            ((WeatherInfoFragment) weatherBasicFragment).setWeatherInfoData(weatherInfoData);
+
+        } else {
+
+            Fragment activeFragment = fragmentManager.findFragmentById(R.id.weather_fragment);
+
+            if (activeFragment != null) {
+                if (activeFragment instanceof WeatherInfoFragment) {
+                    ((WeatherInfoFragment) activeFragment).setWeatherInfoData(weatherInfoData);
+                }
             }
         }
     }
