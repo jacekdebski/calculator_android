@@ -1,7 +1,6 @@
 package com.calculator;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
@@ -9,7 +8,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.time.Duration;
-import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -52,6 +50,11 @@ public class WeatherInfoManager {
 
     public static WeatherInfoData getWeatherInfoData() {
         return mWeatherInfoData;
+    }
+
+    public static void setWeatherInfoData(WeatherInfoData weatherInfoData) {
+        mWeatherInfoData = weatherInfoData;
+        mWeatherInfoLoadListener.onLoadWeatherInfo();
     }
 
     public static ArrayList<Location> getFavoriteLocationsArray() {

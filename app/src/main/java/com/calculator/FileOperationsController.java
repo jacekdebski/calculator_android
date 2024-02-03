@@ -33,6 +33,7 @@ public class FileOperationsController {
         editor.putFloat("windSpeed", weatherInfoData.windSpeed);
         editor.putFloat("windDirection", weatherInfoData.windDirection);
         editor.putInt("humidity", weatherInfoData.humidity);
+        editor.putBoolean("isCelsius", weatherInfoData.isCelsiusUnit);
 //        editor.apply(); //it is asynchronous
         editor.commit();
     }
@@ -54,7 +55,8 @@ public class FileOperationsController {
         float windSpeed = sharedPreferences.getFloat("windSpeed", 0);
         float windDirection = sharedPreferences.getFloat("windDirection", 0);
         int humidity = sharedPreferences.getInt("humidity", 0);
-        return new WeatherInfoData(location, weatherDescription, weatherIcon, timeOfDataCalculation, temperature, pressure, windSpeed, windDirection, humidity);
+        boolean isCelsiusUnit = sharedPreferences.getBoolean("isCelsiusUnit", false);
+        return new WeatherInfoData(location, weatherDescription, weatherIcon, timeOfDataCalculation, temperature, pressure, windSpeed, windDirection, humidity, isCelsiusUnit);
     }
 
     public void saveFavoriteLocationsArrayToSharedPreferences() {

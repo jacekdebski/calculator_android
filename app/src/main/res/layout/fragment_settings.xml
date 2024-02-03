@@ -11,13 +11,13 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="5dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="16dp"
+            android:padding="1dp"
             android:text="settings"
             android:textSize="32sp" />
 
@@ -60,6 +60,20 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Add current city to favorites" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/temperatureUnitSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="temperature in Celsius"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"/>
         </LinearLayout>
 
         <LinearLayout

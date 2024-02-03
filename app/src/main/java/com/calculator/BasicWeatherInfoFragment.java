@@ -80,7 +80,20 @@ public class BasicWeatherInfoFragment extends Fragment implements WeatherInfoFra
         weatherMainTextView.setText(weatherInfoData.weatherDescription);
 
         TextView temperatureTextView = view.findViewById(R.id.temperatureTextView);
-        temperatureTextView.setText(String.valueOf((weatherInfoData.temperature)));
+
+        float convertedTemperature;
+        String temperatureToSetText;
+        if (WeatherInfoManager.getWeatherInfoData().isCelsiusUnit) {
+            convertedTemperature = (float) (weatherInfoData.temperature - 273.15);
+            temperatureToSetText = String.valueOf(convertedTemperature);
+            temperatureToSetText = temperatureToSetText + " ℃";
+
+        } else {
+            convertedTemperature = weatherInfoData.temperature;
+            temperatureToSetText = String.valueOf(convertedTemperature);
+            temperatureToSetText = temperatureToSetText + " K";
+        }
+        temperatureTextView.setText(temperatureToSetText);
 
         TextView pressureTextView = view.findViewById(R.id.pressureTextView);
         pressureTextView.setText(String.valueOf(weatherInfoData.pressure));

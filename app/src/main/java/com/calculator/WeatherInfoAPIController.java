@@ -67,7 +67,7 @@ public class WeatherInfoAPIController {
 
                             if (weatherInfoFetchDataListener != null) {
                                 Location location = new Location(geographicalCoordinates, locationName);
-                                weatherInfoFetchDataListener.onFetchWeatherInfo(new WeatherInfoData(location, weatherDescription, weatherIcon, timeOfDataCalculation, temperature, pressure, windSpeed, windDirection, humidity));
+                                weatherInfoFetchDataListener.onFetchWeatherInfo(new WeatherInfoData(location, weatherDescription, weatherIcon, timeOfDataCalculation, temperature, pressure, windSpeed, windDirection, humidity, false));
                             } else {
                                 Log.i("WeatherInfoAPIController", "weatherInfoFetchDataListener is null");
                             }

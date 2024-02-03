@@ -106,7 +106,7 @@ public class WeatherInfoActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    private void setWeatherDataToActiveFragment() {
+    public void setWeatherDataToActiveFragment() {
         WeatherInfoData weatherInfoData = WeatherInfoManager.getWeatherInfoData();
 
         FragmentManager fragmentManager = getSupportFragmentManager();

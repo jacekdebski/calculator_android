@@ -11,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Switch;
 
 import java.util.ArrayList;
 
@@ -71,6 +73,18 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 WeatherInfoManager.refreshWeatherInfoData();
+            }
+        });
+
+        Switch temperatureUnitSwitch = view.findViewById(R.id.temperatureUnitSwitch);
+        temperatureUnitSwitch.setChecked(WeatherInfoManager.getWeatherInfoData().isCelsiusUnit);
+
+        temperatureUnitSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                WeatherInfoData weatherInfoData = WeatherInfoManager.getWeatherInfoData();
+                weatherInfoData.isCelsiusUnit = isChecked;
+                WeatherInfoManager.setWeatherInfoData(weatherInfoData);
             }
         });
 

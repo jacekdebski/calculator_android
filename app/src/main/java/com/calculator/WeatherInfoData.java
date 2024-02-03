@@ -12,8 +12,9 @@ public class WeatherInfoData {
     float windSpeed;
     float windDirection;
     int humidity;
+    boolean isCelsiusUnit;
 
-    WeatherInfoData(Location location, String weatherDescription, String weatherIcon, ZonedDateTime timeOfDataCalculation, float temperature, int pressure, float windSpeed, float windDirection, int humidity) {
+    WeatherInfoData(Location location, String weatherDescription, String weatherIcon, ZonedDateTime timeOfDataCalculation, float temperature, int pressure, float windSpeed, float windDirection, int humidity, boolean isCelsiusUnit) {
         this.location = location;
         this.weatherDescription = weatherDescription;
         this.weatherIcon = weatherIcon;
@@ -23,5 +24,6 @@ public class WeatherInfoData {
         this.windSpeed = windSpeed;
         this.windDirection = windDirection;
         this.humidity = humidity;
+        this.isCelsiusUnit = isCelsiusUnit;
     }
 }
