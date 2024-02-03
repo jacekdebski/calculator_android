@@ -6,49 +6,41 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Favorite locations" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
 
             <TextView
                 android:id="@+id/favoriteLocationNameTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Location name"></TextView>
+                android:layout_weight="1"
+                android:text=""
+                android:textStyle="bold"
+                android:paddingEnd="8dp"/>
 
             <Button
                 android:id="@+id/removeLocationFromFavoriteButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Remove from favorite location">
-
-            </Button>
+                android:text="Remove"/>
 
             <Button
                 android:id="@+id/setLocationButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Set">
-
-            </Button>
-
+                android:text="Set"/>
 
         </LinearLayout>
 
-
     </LinearLayout>
 
-
 </RelativeLayout>
-
